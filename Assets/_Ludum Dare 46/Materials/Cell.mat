@@ -33,4 +33,4 @@ Material:
     - _OutlineWidth: 5
     m_Colors:
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
-    - _Tint: {r: 1, g: 1, b: 1, a: 1}
+    - _Tint: {r: 0.9811321, g: 0.9811321, b: 0.9811321, a: 1}
