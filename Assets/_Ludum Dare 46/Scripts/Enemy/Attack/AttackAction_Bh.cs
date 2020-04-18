@@ -29,7 +29,7 @@
 				//fetch current position
 				Vector2Int cp = new Vector2Int();
 				cp = (enemyEntity.gridPosition);
-				Debug.LogError(cp);
+				//Debug.LogError(cp);
 
 				//Get and rotate real attack pattern
 				bool[,] realAttackPattern = GetAttackPatternCopy();

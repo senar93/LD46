@@ -71,6 +71,7 @@
 		private void SetAttackPattern()
 		{
 			Cell[] cells = GetCurrentAttack();
+			Debug.Log("Player Position: " + gridPosition);
 			Debug.Log("Lenght: " + cells.Length);
 			for (int i = 0; i < cells.Length; i++)
 				Debug.Log("Cells[ " + cells[i].x + " , " + cells[i].y + " ]");
