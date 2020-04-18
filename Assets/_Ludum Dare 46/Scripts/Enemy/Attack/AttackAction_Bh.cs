@@ -15,21 +15,31 @@
 		[Title("Parameters"), SerializeField, ShowIf("attackPattern")]
 		private bool[,] attackPattern;
 
-		/// <summary>
-		/// WIP
-		/// </summary>
-		public Vector2Int[] selectedCells {
-			get {
-				List<Vector2Int> tmp = new List<Vector2Int>();
+		[Title("Next Attack Index"), Range(0, 255), SerializeField, Space]
+		private int nextAttackIndexValue = 0;
 
+		public Cell[] SelectedCells {
+			get 
+			{
+				EnemyEntity enemyEntity = (Entity as EnemyEntity);
+				//fetch grid size
+				Vector2Int gridSize = new Vector2Int();
+				gridSize.x = enemyEntity.currentGrid.cells.GetLength(0);
+				gridSize.y = enemyEntity.currentGrid.cells.GetLength(1);
+				//fetch current position
+				Vector2Int cp = new Vector2Int();
+				cp = (enemyEntity.gridPosition);
+				Debug.LogError(cp);
 
-				return null;
+				//Get and rotate real attack pattern
+				bool[,] realAttackPattern = GetAttackPatternCopy();
+				RotateRealAttackPattern(realAttackPattern);
+
+				return GetTargettedCellsCoords(realAttackPattern, cp, gridSize).ToArray();
 			}
 		}
 
 
-		[Title("Next Attack Index"), Range(0, 255), SerializeField, Space]
-		private int nextAttackIndexValue = 0;
 		public override void SetNextIndex()
 		{
 			((EnemyEntity)Entity).attackActionIndex = nextAttackIndexValue;
@@ -65,6 +75,76 @@
 
 		#endregion
 
+
+		#region INTERNAL FUNCTION
+		private bool[,] GetAttackPatternCopy()
+		{
+			bool[,] realAttackPattern = new bool[radius * 2 + 1, radius * 2 + 1];
+			for (int i = 0; i < realAttackPattern.GetLength(0); i++)
+			{
+				for (int j = 0; j < realAttackPattern.GetLength(1); j++)
+				{
+					realAttackPattern[i, j] = attackPattern[i, j];
+				}
+			}
+			return realAttackPattern;
+		}
+
+		private void RotateRealAttackPattern(bool[,] realAttackPattern)
+		{
+			switch ((Entity as EnemyEntity).enemyDirection)
+			{
+				case DirectionEnum.Up:
+					break;
+				case DirectionEnum.Right:
+					realAttackPattern.RotateMatrix(radius * 2 + 1);
+					break;
+				case DirectionEnum.Down:
+					realAttackPattern.RotateMatrix(radius * 2 + 1);
+					realAttackPattern.RotateMatrix(radius * 2 + 1);
+					break;
+				case DirectionEnum.Left:
+					realAttackPattern.RotateMatrix(radius * 2 + 1);
+					realAttackPattern.RotateMatrix(radius * 2 + 1);
+					realAttackPattern.RotateMatrix(radius * 2 + 1);
+					break;
+			}
+		}
+
+		private bool ValidateGridCoords(int x, int y, Vector2Int gridSize) {
+			return x >= 0 && 
+				   y >= 0 &&
+				   x < gridSize.x &&
+				   y < gridSize.y;
+		}
+
+		private List<Cell> GetTargettedCellsCoords(bool[,] realAttackPattern, Vector2Int cp, Vector2Int gridSize)
+		{
+			List<Cell> tmpList = new List<Cell>();
+			EnemyEntity enemyEntity = (Entity as EnemyEntity);
+			Vector2Int realOffset = new Vector2Int(cp.x - (realAttackPattern.GetLength(0) / 2),
+												   cp.y - (realAttackPattern.GetLength(1) / 2));
+
+
+			for (int xLoc = 0; xLoc < realAttackPattern.GetLength(0); xLoc++)
+			{
+				for (int yLoc = 0; yLoc < realAttackPattern.GetLength(1); yLoc++)
+				{
+					//la cella presa in considerazione nel pattern è vera e appartiene alla griglia
+					if (realAttackPattern[xLoc, yLoc] == true &&
+						ValidateGridCoords(xLoc + realOffset.x,
+										   yLoc + realOffset.y,
+										   gridSize))
+					{
+						tmpList.Add(enemyEntity.currentGrid.cells[xLoc + realOffset.x, 
+																  yLoc + realOffset.y]);
+					}
+				}
+			}
+
+			return tmpList;
+		}
+		#endregion
 
 	}
 

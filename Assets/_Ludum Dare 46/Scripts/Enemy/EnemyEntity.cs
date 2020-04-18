@@ -16,9 +16,9 @@
 
 		//[ReadOnly]
 		public GridData currentGrid;
-		[ReadOnly]
+		//[ReadOnly]
 		public Vector2Int gridPosition = new Vector2Int(0, 0);
-		[ReadOnly]
+		//[ReadOnly]
 		public DirectionEnum enemyDirection = DirectionEnum.Up;
 
 
@@ -39,6 +39,12 @@
 		/// <returns></returns>
 		public Cell[] GetCurrentAttack()
 		{
+			AttackManager_Bh tmp;
+			if (TryGetBehaviour(out tmp))
+			{
+				return tmp.CurrentAction.SelectedCells;
+			}
+
 			return null;
 		}
 
@@ -58,6 +64,16 @@
 			{
 				tmp.GoToNextAction();
 			}
+		}
+
+
+		[Button("TEST!", ButtonSizes.Large), GUIColor(0.5f, 1f, 0.5f, 1f)]
+		private void SetAttackPattern()
+		{
+			Cell[] cells = GetCurrentAttack();
+			Debug.Log("Lenght: " + cells.Length);
+			for (int i = 0; i < cells.Length; i++)
+				Debug.Log("Cells[ " + cells[i].x + " , " + cells[i].y + " ]");
 		}
 
 	}
