@@ -11,7 +11,7 @@
     public class MoveIndex : AbsCondition
 	{
 		[Title("Pointers"), SerializeField]
-		private EnemyStatus_Bh enemyStatus;
+		private EnemyEntity enemyEntity;
 
 		[Title("Condition Parameters"), SerializeField]
 		private NumberComparisonType comparrisonType;
@@ -20,10 +20,10 @@
 
 		public override bool Check()
 		{
-			if (enemyStatus == null)
+			if (enemyEntity == null)
 				return false;
 
-			return comparrisonType.Compare(enemyStatus.movementActionIndex, indexToCompare); 
+			return comparrisonType.Compare(enemyEntity.movementActionIndex, indexToCompare); 
 		}
 	}
 }
