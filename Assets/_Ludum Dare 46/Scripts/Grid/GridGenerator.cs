@@ -36,7 +36,7 @@
             print( startingOffset );
             for ( int x = 0; x < size.x; x++ ) {
                 for ( int y = 0; y < size.y; y++ ) {
-                    Vector3 specificOffset = new Vector3( x * cellDistance, 0, y * cellDistance );
+                    Vector3 specificOffset = new Vector3( x * cellDistance + cellDistance * .5f, 0, y * cellDistance + cellDistance * .5f );
                     Cell c = Instantiate( cellPrefab,
                         container.transform.position + startingOffset + specificOffset,
                         Quaternion.identity, container );
