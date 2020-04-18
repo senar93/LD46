@@ -203,6 +203,7 @@ MonoBehaviour:
       Data: 
   index: 0
   movement: 01000000020000000300000001000000
+  nextMovementIndexValue: 0
 --- !u!1 &5645932303833111240
 GameObject:
   m_ObjectHideFlags: 0
@@ -314,6 +315,8 @@ MonoBehaviour:
     SerializationNodes: []
   attackActionIndex: 0
   movementActionIndex: 0
+  gridPosition: {x: 0, y: 0}
+  enemyDirection: 1
 --- !u!1 &8757418328735715475
 GameObject:
   m_ObjectHideFlags: 0
@@ -365,7 +368,26 @@ MonoBehaviour:
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes: []
+    SerializationNodes:
+    - Name: conditions
+      Entry: 7
+      Data: 0|System.Collections.Generic.List`1[[LD46.AbsCondition, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: attackPattern
+      Entry: 6
+      Data: 
+  index: 0
+  radius: 0
+  nextAttackIndexValue: 0
 --- !u!1001 &1483889548
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -440,7 +462,7 @@ PrefabInstance:
     - target: {fileID: 13700000, guid: f51633bbd1227dc4bbe886b073535aa4, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 6b8956a8e272a224a9b42a1abbfa8136, type: 2}
+      objectReference: {fileID: 2100000, guid: a060ec14dbdeafc4096d977fa7536433, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f51633bbd1227dc4bbe886b073535aa4, type: 3}
 --- !u!4 &1484013836 stripped
