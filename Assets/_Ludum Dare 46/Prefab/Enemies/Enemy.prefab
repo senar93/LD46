@@ -202,7 +202,6 @@ MonoBehaviour:
       Entry: 8
       Data: 
   index: 0
-  movement: 01000000020000000300000001000000
   nextMovementIndexValue: 0
 --- !u!1 &5645932303833111240
 GameObject:
@@ -462,7 +461,7 @@ PrefabInstance:
     - target: {fileID: 13700000, guid: f51633bbd1227dc4bbe886b073535aa4, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: a060ec14dbdeafc4096d977fa7536433, type: 2}
+      objectReference: {fileID: 2100000, guid: 7593159338a8eb642b1c6ca2eed3e390, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f51633bbd1227dc4bbe886b073535aa4, type: 3}
 --- !u!4 &1484013836 stripped
