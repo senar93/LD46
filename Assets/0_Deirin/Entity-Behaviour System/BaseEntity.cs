@@ -1,8 +1,9 @@
 ﻿namespace Deirin.EB {
     using System.Collections.Generic;
     using UnityEngine;
+	using Sirenix.OdinInspector;
 
-    public abstract class BaseEntity : MonoBehaviour {
+    public abstract class BaseEntity : SerializedMonoBehaviour {
         public bool setupOnAwake = false;
 
         public BaseBehaviour[] Behaviours { get; private set; }

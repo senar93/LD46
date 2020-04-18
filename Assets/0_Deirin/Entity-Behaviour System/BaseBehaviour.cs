@@ -1,7 +1,10 @@
 ﻿namespace Deirin.EB {
     using UnityEngine;
+	using Sirenix.OdinInspector;
 
-    public abstract class BaseBehaviour : MonoBehaviour {
+
+	public abstract class BaseBehaviour : SerializedMonoBehaviour
+	{
         public BaseEntity Entity { get; private set; }
 
         public void Setup ( BaseEntity e ) {
