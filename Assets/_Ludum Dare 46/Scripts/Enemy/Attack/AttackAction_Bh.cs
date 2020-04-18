@@ -10,7 +10,7 @@
 	{
 		//pattern attacco da effettuare
 		[Title("Parameters"), Range(1,10), SerializeField, HideIf("attackPattern")]
-		int radius;
+		private int radius;
 
 		[Title("Parameters"), SerializeField, ShowIf("attackPattern")]
 		private bool[,] attackPattern;
@@ -19,7 +19,7 @@
 		[Title("Next Attack Index"), Range(0, 255), SerializeField, Space]
 		private int nextAttackIndexValue = 0;
 		private EnemyStatus_Bh enemyStatus;
-		public void SetNextAttackIndex()
+		public override void SetNextIndex()
 		{
 			if (enemyStatus || Entity.TryGetBehaviour<EnemyStatus_Bh>(out enemyStatus))
 			{

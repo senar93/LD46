@@ -4,12 +4,10 @@
 	using System.Collections;
 	using System.Collections.Generic;
 	using UnityEngine;
+	using Sirenix.OdinInspector;
 
-	public class MoveManager_Bh : BaseBehaviour
+	public class MoveManager_Bh : AbsMananger_Bh<MoveAction_Bh>
 	{
-		//lista di tutte le azioni di movimento
-
-		//azione da eseguire presa dalle azioni correnti
 
 	}
 }

@@ -8,14 +8,19 @@
 
 	public class MoveAction_Bh : AbsAction_Bh
 	{
-		[Title("Movement"), Required, EnumToggleButtons, Space]
-		public List<MoveActionEnum> movement = new List<MoveActionEnum>();
+		[Title("Movement"), Required, EnumToggleButtons]
+		private List<MoveActionEnum> _movement = new List<MoveActionEnum>();
 
-		
+		public MoveActionEnum[] Movement 
+		{
+			get => _movement.ToArray();
+		}
+
+
 		[Title("Next Movement Index"), Range(0, 255), SerializeField, Space]
 		private int nextMovementIndexValue = 0;
 		private EnemyStatus_Bh enemyStatus;
-		public void SetNextMovementIndex()
+		public override void SetNextIndex()
 		{		
 			if(enemyStatus || Entity.TryGetBehaviour<EnemyStatus_Bh>(out enemyStatus))
 			{

@@ -5,11 +5,9 @@
 	using System.Collections.Generic;
 	using UnityEngine;
 
-	public class AttackManager_Bh : BaseBehaviour
+	public class AttackManager_Bh : AbsMananger_Bh<AttackAction_Bh>
 	{
-		//lista di tutte le azioni di movimento
-
-		//azione da eseguire presa dalle azioni correnti
 
 	}
+
 }

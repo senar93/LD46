@@ -6,7 +6,7 @@
 	using System.Collections.Generic;
 	using UnityEngine;
 
-	public class AbsAction_Bh : BaseBehaviour
+	public abstract class AbsAction_Bh : BaseBehaviour
 	{
 		[Title("Action Parameters"), Range(0, 255)]
 		public int index = 0;
@@ -33,6 +33,8 @@
 				return true;    //non ci sono condizioni
 			}
 		}
+
+		public abstract void SetNextIndex();
 
 	}
 }
