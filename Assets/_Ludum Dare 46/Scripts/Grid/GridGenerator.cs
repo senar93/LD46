@@ -5,7 +5,7 @@
     using UnityEditor;
 #endif
 
-    public class GridGenerator : MonoBehaviour {
+    public class GridGenerator : SerializedMonoBehaviour {
         [Title("Data")]
         public GridData gridData;
 
@@ -19,6 +19,12 @@
         [Title("References")]
         public Transform container;
 
+        [SerializeField] private Cell[,] cells;
+
+        private void Awake () {
+            gridData.cells = cells;
+        }
+
         [Button( "Generate" )]
         public void Generate () {
             int count = container.childCount;
@@ -31,7 +37,7 @@
                 }
             }
 
-            gridData.cells = new Cell[size.x, size.y];
+            cells = new Cell[size.x, size.y];
             Vector3 startingOffset = new Vector3( -size.x * .5f * cellDistance, 0, -size.y * .5f * cellDistance );
             print( startingOffset );
             for ( int x = 0; x < size.x; x++ ) {
@@ -42,13 +48,27 @@
                         Quaternion.identity, container );
                     c.x = x;
                     c.y = y;
-                    gridData.cells[x, y] = c;
+                    cells[x, y] = c;
+                }
+            }
+
 #if UNITY_EDITOR
-                    EditorUtility.SetDirty( gridData );
-                    AssetDatabase.SaveAssets();
+            EditorUtility.SetDirty( gridData );
+            AssetDatabase.SaveAssets();
 #endif
+        }
+
+#if UNITY_EDITOR
+        private void OnDrawGizmos () {
+            if ( cells == null )
+                return;
+            for ( int x = 0; x < cells.GetLength( 0 ); x++ ) {
+                for ( int y = 0; y < cells.GetLength( 1 ); y++ ) {
+                    Cell c = cells[x,y];
+                    Handles.Label( c.transform.position, c.x.ToString() + "," + c.y.ToString(), EditorStyles.boldLabel );
                 }
             }
         }
+#endif
     }
 }
