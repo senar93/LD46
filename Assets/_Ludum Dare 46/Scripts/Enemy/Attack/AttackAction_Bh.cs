@@ -18,13 +18,9 @@
 
 		[Title("Next Attack Index"), Range(0, 255), SerializeField, Space]
 		private int nextAttackIndexValue = 0;
-		private EnemyStatus_Bh enemyStatus;
 		public override void SetNextIndex()
 		{
-			if (enemyStatus || Entity.TryGetBehaviour<EnemyStatus_Bh>(out enemyStatus))
-			{
-				enemyStatus.attackActionIndex = nextAttackIndexValue;
-			}
+			((EnemyEntity)Entity).attackActionIndex = nextAttackIndexValue;
 		}
 
 		#region EDITOR

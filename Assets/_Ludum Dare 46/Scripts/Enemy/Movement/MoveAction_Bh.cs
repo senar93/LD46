@@ -8,7 +8,7 @@
 
 	public class MoveAction_Bh : AbsAction_Bh
 	{
-		[Title("Movement"), Required, EnumToggleButtons]
+		[Title("Movement"), GUIColor(0.9f, 0.9f, 1f, 1f), SerializeField, Required, EnumToggleButtons]
 		private List<MoveActionEnum> _movement = new List<MoveActionEnum>();
 
 		public MoveActionEnum[] Movement 
@@ -19,13 +19,9 @@
 
 		[Title("Next Movement Index"), Range(0, 255), SerializeField, Space]
 		private int nextMovementIndexValue = 0;
-		private EnemyStatus_Bh enemyStatus;
 		public override void SetNextIndex()
 		{		
-			if(enemyStatus || Entity.TryGetBehaviour<EnemyStatus_Bh>(out enemyStatus))
-			{
-				enemyStatus.movementActionIndex = nextMovementIndexValue;
-			}
+			((EnemyEntity) Entity).movementActionIndex = nextMovementIndexValue;
 		}
 	}
 
