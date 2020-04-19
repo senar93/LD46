@@ -9,9 +9,6 @@
 
 	public abstract class AbsAction_Bh : BaseBehaviour
 	{
-		[Title("Action Parameters"), Range(0, 255)]
-		public int index = 0;
-
 		[Title("Conditions"), GUIColor(1f, 1f, 0.9f, 1f), ReadOnly, Space]
 		public List<AbsCondition> conditions = new List<AbsCondition>();
 
