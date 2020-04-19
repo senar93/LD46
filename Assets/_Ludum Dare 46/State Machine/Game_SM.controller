@@ -461,6 +461,7 @@ MonoBehaviour:
   OnExit:
     m_PersistentCalls:
       m_Calls: []
+  OnPlayerAction: {fileID: 11400000, guid: 68a499309457baa4dabf936462d2d529, type: 2}
 --- !u!1101 &4510620203289185004
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -575,6 +576,8 @@ MonoBehaviour:
   OnExit:
     m_PersistentCalls:
       m_Calls: []
+  OnEggDeath: {fileID: 11400000, guid: dfe9be6b75f950c49b192c425556e1a1, type: 2}
+  OnEnemyDeath: {fileID: 11400000, guid: c2920597b31c045448670913f0fadd44, type: 2}
 --- !u!1101 &8670791026975123279
 AnimatorStateTransition:
   m_ObjectHideFlags: 1

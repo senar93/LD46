@@ -2,17 +2,20 @@
     using UnityEngine;
     using Sirenix.OdinInspector;
     using DG.Tweening;
+    using System.Collections.Generic;
 
     public class Level : MonoBehaviour {
         [Title("Data")]
         public GridData gridData;
+        [Min(0)] public int turns;
 
         [Title("References")]
-        public EnemyEntity[] enemies;
+        public List<EnemyEntity> enemies;
         public Egg egg;
         public Transform hiddenPos;
 
         public System.Action OnActivationSequenceEnd;
+        public bool EnemiesLeft => enemies.Count > 0;
 
         public void Setup () {
             foreach ( var cell in gridData.cells ) {
@@ -39,7 +42,7 @@
                     if ( x == 0 && y == 0 )
                         continue;
                     c = gridData.cells[x, y];
-                    s.Insert( (x+y) * .2f, c.transform.DOMove( c.originalPos, 1.4f ).SetEase( Ease.OutQuint ) );
+                    s.Insert( ( x + y ) * .2f, c.transform.DOMove( c.originalPos, 1.4f ).SetEase( Ease.OutQuint ) );
                     s.Join( c.transform.DOLocalRotate( c.originalEulers, 1.4f ).SetEase( Ease.OutQuint ) );
                 }
             }

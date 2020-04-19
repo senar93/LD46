@@ -2103,6 +2103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridData: {fileID: 11400000, guid: 7f500b1070e62f942b6a9a45e4e46170, type: 2}
+  turns: 0
   enemies:
   - {fileID: 4503404401708140561}
   - {fileID: 4503404400527789534}
@@ -4597,6 +4598,31 @@ PrefabInstance:
       propertyPath: cell
       value: 
       objectReference: {fileID: 4882553890336303627}
+    - target: {fileID: 7077546804656527398, guid: d5e464d0e6b27f846abf53b129e43e2e,
+        type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7077546804656527398, guid: d5e464d0e6b27f846abf53b129e43e2e,
+        type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7077546804656527398, guid: d5e464d0e6b27f846abf53b129e43e2e,
+        type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7077546804656527398, guid: d5e464d0e6b27f846abf53b129e43e2e,
+        type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7077546804656527398, guid: d5e464d0e6b27f846abf53b129e43e2e,
+        type: 3}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5e464d0e6b27f846abf53b129e43e2e, type: 3}
 --- !u!4 &1563249539362664141 stripped

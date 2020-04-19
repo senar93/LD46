@@ -30,12 +30,13 @@
     public class GameContext : IStateMachineData {
         [Header("References")]
         public Level[] levels;
-        [HideInInspector] public Level currentLevel;
         public Transform levelButtonsContainer;
         public ParticleSystem ambientParticle;
         public Player player;
         public GameObject mainMenu;
 
+        [HideInInspector] public Level currentLevel;
+        [HideInInspector] public int currentLevelTurnsLeft;
         public Action Next, Win, Loss;
 
         public void GoNext () {
