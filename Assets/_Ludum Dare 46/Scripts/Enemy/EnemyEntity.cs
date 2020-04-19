@@ -19,7 +19,7 @@
 		//[ReadOnly]
 		public Cell cell;
 		//[ReadOnly]
-		public DirectionEnum enemyDirection = DirectionEnum.Up;
+		public DirectionEnum enemyDirection = DirectionEnum.Down;
 
 
 		public MoveActionEnum[] GetCurrentMovement()

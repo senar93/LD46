@@ -81,12 +81,12 @@
 
         private void RotateRealAttackPattern ( bool[,] realAttackPattern ) {
             switch ( ( Entity as EnemyEntity ).enemyDirection ) {
-                case DirectionEnum.Up:
+                case DirectionEnum.Down:
                 break;
                 case DirectionEnum.Right:
                 realAttackPattern.RotateMatrix( radius * 2 + 1 );
                 break;
-                case DirectionEnum.Down:
+                case DirectionEnum.Up:
                 realAttackPattern.RotateMatrix( radius * 2 + 1 );
                 realAttackPattern.RotateMatrix( radius * 2 + 1 );
                 break;
