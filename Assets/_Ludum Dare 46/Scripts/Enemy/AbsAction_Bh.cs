@@ -36,5 +36,14 @@
 
 		public abstract void SetNextIndex();
 
+
+
+		protected bool ValidateGridCoords(int x, int y, Vector2Int gridSize)
+		{
+			return x >= 0 &&
+				   y >= 0 &&
+				   x < gridSize.x &&
+				   y < gridSize.y;
+		}
 	}
 }

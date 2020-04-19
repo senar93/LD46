@@ -1,10 +1,8 @@
 ﻿namespace LD46
 {
 	using Deirin.EB;
-	using System.Collections;
-	using System.Collections.Generic;
 	using Sirenix.OdinInspector;
-    using UnityEngine;
+	using UnityEngine;
 
 	public class EnemyEntity : BaseEntity
 	{
@@ -13,21 +11,40 @@
 		public int attackActionIndex = 0;
 		[Range(0, 255)]
 		public int movementActionIndex = 0;
+		[Range(0, 255)]
+		public int rotationActionIndex = 0;
 
-		//[ReadOnly]
 		public GridData currentGrid;
-		//[ReadOnly]
 		public Cell cell;
-		//[ReadOnly]
 		public DirectionEnum enemyDirection = DirectionEnum.Down;
 
 
-		public MoveActionEnum[] GetCurrentMovement()
+		#region API GET SOMETHING
+		/// <summary>
+		/// la lista delle celle in cui si muoverà l'entity, ordinate
+		/// </summary>
+		/// <returns></returns>
+		public Cell[] GetMovementCells()
 		{
 			MoveManager_Bh tmp;
 			if(TryGetBehaviour(out tmp))
 			{
-				return tmp.CurrentAction.Movement;
+				return tmp.CurrentAction.SelectedCells;
+			}
+
+			return null;
+		}
+
+		/// <summary>
+		/// l'ultima cella in cui si muoverà l'entity
+		/// </summary>
+		/// <returns></returns>
+		public Cell GetMovementLastCell()
+		{
+			MoveManager_Bh tmp;
+			if (TryGetBehaviour(out tmp))
+			{
+				return tmp.CurrentAction.SelectedCells[tmp.CurrentAction.SelectedCells.Length - 1];
 			}
 
 			return null;
@@ -37,7 +54,7 @@
 		/// Restituisce la lista delle celle che verranno attaccate da questo nemico
 		/// </summary>
 		/// <returns></returns>
-		public Cell[] GetCurrentAttack()
+		public Cell[] GetAttackTargets()
 		{
 			AttackManager_Bh tmp;
 			if (TryGetBehaviour(out tmp))
@@ -48,6 +65,39 @@
 			return null;
 		}
 
+		/// <summary>
+		/// da che lato sta ruotando entity
+		/// </summary>
+		/// <returns></returns>
+		public RotateActionEnum GetRotationAction()
+		{
+			RotationManager_Bh tmp;
+			if (TryGetBehaviour(out tmp))
+			{
+				return tmp.CurrentAction.rotation;
+			}
+
+			return RotateActionEnum.none;
+		}
+
+		/// <summary>
+		/// la vera rotazione di entity
+		/// </summary>
+		/// <returns></returns>
+		public DirectionEnum GetNewGlobalDirection()
+		{
+			RotationManager_Bh tmp;
+			if (TryGetBehaviour(out tmp))
+			{
+				return tmp.CurrentAction.NewEntityDirection;
+			}
+
+			return enemyDirection;
+		}
+
+		#endregion
+
+		#region API INDEX UPDATE
 		public void GoToNextMovementAction()
 		{
 			MoveManager_Bh tmp;
@@ -66,11 +116,22 @@
 			}
 		}
 
+		public void GoToNextRotationAction()
+		{
+			RotationManager_Bh tmp;
+			if (TryGetBehaviour(out tmp))
+			{
+				tmp.GoToNextAction();
+			}
+		}
+
+		#endregion
+
 
 		[Button("TEST!", ButtonSizes.Large), GUIColor(0.5f, 1f, 0.5f, 1f)]
 		private void SetAttackPattern()
 		{
-			Cell[] cells = GetCurrentAttack();
+			Cell[] cells = GetAttackTargets();//GetCurrentMovementCells();
 #if UNITY_EDITOR
 			Debug.Log( "Player Position: " + cell.x + "," + cell.y );
 			Debug.Log( "Lenght: " + cells.Length );

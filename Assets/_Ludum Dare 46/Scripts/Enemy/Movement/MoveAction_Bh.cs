@@ -8,12 +8,62 @@
 
 	public class MoveAction_Bh : AbsAction_Bh
 	{
-		[Title("Movement"), GUIColor(0.9f, 0.9f, 1f, 1f), SerializeField, Required, EnumToggleButtons]
-		private List<MoveActionEnum> _movement = new List<MoveActionEnum>();
+		[Title("Movement"), GUIColor(0.9f, 0.9f, 1f, 1f), Range(0, 10), SerializeField, Required, EnumToggleButtons]
+		public int movement = 1;
 
-		public MoveActionEnum[] Movement 
-		{
-			get => _movement.ToArray();
+		/// <summary>
+		/// WIP
+		/// </summary>
+		public Cell[] SelectedCells {
+			get {
+				EnemyEntity enemyEntity = (Entity as EnemyEntity);
+				//fetch grid size
+				Vector2Int gridSize = new Vector2Int();
+				gridSize.x = enemyEntity.currentGrid.cells.GetLength(0);
+				gridSize.y = enemyEntity.currentGrid.cells.GetLength(1);
+				//fetch current position
+				Vector2Int cp = new Vector2Int();
+				cp.Set(enemyEntity.cell.x, enemyEntity.cell.y);
+				//Debug.LogError(cp);
+
+				List<Cell> tmpList = new List<Cell>();
+
+				int x = 0;
+				int y = 0;
+				for (int i = 1; i <= movement; i++)
+				{
+					switch (enemyEntity.enemyDirection)
+					{
+						case DirectionEnum.Down:
+							x = 0;
+							y = -i;
+							break;
+						case DirectionEnum.Right:
+							x = i;
+							y = 0;
+							break;
+						case DirectionEnum.Up:
+							x = 0;
+							y = i;
+							break;
+						case DirectionEnum.Left:
+							x = -i;
+							y = 0;
+							break;
+					}
+
+					if (ValidateGridCoords(cp.x + x, cp.y + y, gridSize))
+					{
+						tmpList.Add(enemyEntity.currentGrid.cells[cp.x + x, cp.y + y]);
+					}
+					else 
+					{
+						break;
+					}
+				}
+
+				return tmpList.ToArray();
+			}
 		}
 
 
@@ -23,12 +73,5 @@
 		{		
 			((EnemyEntity) Entity).movementActionIndex = nextMovementIndexValue;
 		}
-	}
-
-	public enum MoveActionEnum 
-	{
-		GoForward = 1,
-		TurnLeft = 2,
-		TurnRight = 3
 	}
 }

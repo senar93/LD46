@@ -84,25 +84,18 @@
                 case DirectionEnum.Down:
                 break;
                 case DirectionEnum.Right:
-                realAttackPattern.RotateMatrix( radius * 2 + 1 );
+					realAttackPattern.RotateMatrix( radius * 2 + 1 );
                 break;
                 case DirectionEnum.Up:
-                realAttackPattern.RotateMatrix( radius * 2 + 1 );
-                realAttackPattern.RotateMatrix( radius * 2 + 1 );
+					realAttackPattern.RotateMatrix( radius * 2 + 1 );
+					realAttackPattern.RotateMatrix( radius * 2 + 1 );
                 break;
                 case DirectionEnum.Left:
-                realAttackPattern.RotateMatrix( radius * 2 + 1 );
-                realAttackPattern.RotateMatrix( radius * 2 + 1 );
-                realAttackPattern.RotateMatrix( radius * 2 + 1 );
+					realAttackPattern.RotateMatrix( radius * 2 + 1 );
+					realAttackPattern.RotateMatrix( radius * 2 + 1 );
+					realAttackPattern.RotateMatrix( radius * 2 + 1 );
                 break;
             }
-        }
-
-        private bool ValidateGridCoords ( int x, int y, Vector2Int gridSize ) {
-            return x >= 0 &&
-                   y >= 0 &&
-                   x < gridSize.x &&
-                   y < gridSize.y;
         }
 
         private List<Cell> GetTargettedCellsCoords ( bool[,] realAttackPattern, Vector2Int cp, Vector2Int gridSize ) {
