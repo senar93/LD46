@@ -30,6 +30,7 @@
             tempEnemies.Clear();
 
             context.currentLevelTurnsLeft--;
+            context.turnCounter.UpdateUI( context.currentLevelTurnsLeft );
         }
     }
 }

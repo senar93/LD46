@@ -1,18 +1,20 @@
 ﻿namespace LD46 {
     using UnityEngine;
 
-    public class MovesCount : MonoBehaviour {
+    public class CounterUI : MonoBehaviour {
         [Header("Prefab")]
-        public Transform moveUIPrefab;
+        public Transform prefab;
         [Header("References")]
         public Transform container;
 
-        public void MovesChangeHandler ( int moves ) {
+        public void UpdateUI ( int amount ) {
             for ( int i = 0; i < container.childCount; i++ ) {
                 Destroy( container.GetChild( i ).gameObject );
             }
 
-            Instantiate( moveUIPrefab, container );
+            for ( int i = 0; i < amount; i++ ) {
+                Instantiate( prefab, container );
+            }
         }
     }
 }

@@ -35,6 +35,7 @@
         public Player player;
         public GameObject mainMenu;
         public GridData gridData;
+        public CounterUI turnCounter, movesCounter;
 
         [HideInInspector] public Level currentLevel;
         [HideInInspector] public int currentLevelTurnsLeft;

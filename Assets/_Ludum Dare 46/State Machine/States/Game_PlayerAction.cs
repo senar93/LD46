@@ -1,10 +1,12 @@
 ﻿namespace LD46 {
     using UnityEngine;
     using Deirin.Utilities;
+    using System;
 
     public class Game_PlayerAction : GameStateBase {
         [Header("Event Listeners")]
-        public GameEvent OnPlayerAction;
+        public GameEvent OnPlayerActionBegin;
+        public GameEvent OnPlayerActionEnd;
 
         public override void Enter () {
             base.Enter();
@@ -15,17 +17,18 @@
             }
 
             context.player.moves = 1;
+            context.movesCounter.UpdateUI( context.player.moves );
 
-            OnPlayerAction.InvokeAction += PlayerActionHandler;
+            OnPlayerActionBegin.InvokeAction += PlayerActionBeginHandler;
+            OnPlayerActionEnd.InvokeAction += PlayerActionEndHandler;
         }
 
-        //public override void Tick () {
-        //    if ( Input.GetKeyDown( KeyCode.Space ) )
-        //        OnPlayerAction.Invoke();
-        //}
-
-        private void PlayerActionHandler () {
+        private void PlayerActionBeginHandler () {
             context.player.moves--;
+            context.movesCounter.UpdateUI( context.player.moves );
+        }
+
+        private void PlayerActionEndHandler () {
             if ( context.player.moves == 0 )
                 context.GoNext();
         }
@@ -33,7 +36,7 @@
         public override void Exit () {
             base.Exit();
 
-            OnPlayerAction.InvokeAction -= PlayerActionHandler;
+            OnPlayerActionEnd.InvokeAction -= PlayerActionEndHandler;
         }
     }
 }

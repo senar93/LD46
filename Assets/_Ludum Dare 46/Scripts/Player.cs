@@ -4,7 +4,5 @@
 
     public class Player : MonoBehaviour {
         [ReadOnly] public int moves;
-
-        public UnityEvent_Int OnMovesChange;
     }
 }
