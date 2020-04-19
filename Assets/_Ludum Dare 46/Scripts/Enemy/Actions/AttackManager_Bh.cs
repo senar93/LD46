@@ -5,6 +5,7 @@
 	using System.Collections.Generic;
 	using UnityEngine;
 
+	[AddComponentMenu("_Ludum Dare 46/Enemy/Manager/Attack Manager")]
 	public class AttackManager_Bh : AbsMananger_Bh<AttackAction_Bh>
 	{
 

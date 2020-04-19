@@ -8,6 +8,7 @@
 	using SenarCustomSystem.Utility;
 	using static SenarCustomSystem.Utility.ComparisonTypeUtility;
 
+	[AddComponentMenu("_Ludum Dare 46/Enemy/Conditions/Grid Border")]
 	public class GridBorder : AbsCondition
 	{
 		[SerializeField]

@@ -8,7 +8,8 @@
 	using SenarCustomSystem.Utility;
     using static SenarCustomSystem.Utility.ComparisonTypeUtility;
 
-    public class MoveIndex : AbsCondition
+	[AddComponentMenu("_Ludum Dare 46/Enemy/Conditions/Move Index")]
+	public class MoveIndex : AbsCondition
 	{
 		[Title("Condition Parameters"), SerializeField]
 		private NumberComparisonType comparrisonType;

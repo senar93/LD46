@@ -6,6 +6,7 @@
 	using System.Collections.Generic;
 	using UnityEngine;
 
+	[AddComponentMenu("_Ludum Dare 46/Enemy/Actions/Rotation")]
 	public class RotationAction_Bh : AbsAction_Bh
 	{
 		[Title("Movement"), GUIColor(0.9f, 0.9f, 1f, 1f), SerializeField, Required, EnumToggleButtons]
@@ -74,13 +75,5 @@
 		{
 			((EnemyEntity)Entity).rotationActionIndex = nextRotationIndexValue;
 		}
-	}
-
-	public enum RotateActionEnum
-	{
-		TurnLeft = 1,
-		TurnRight = 2,
-		Turn180 = 3,
-		none = 0
 	}
 }
