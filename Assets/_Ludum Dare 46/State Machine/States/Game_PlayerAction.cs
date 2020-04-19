@@ -14,7 +14,7 @@
                 return;
             }
 
-            context.player.Moves = 1;
+            context.player.moves = 1;
 
             OnPlayerAction.InvokeAction += PlayerActionHandler;
         }
@@ -25,8 +25,8 @@
         //}
 
         private void PlayerActionHandler () {
-            context.player.Moves--;
-            if ( context.player.Moves == 0 )
+            context.player.moves--;
+            if ( context.player.moves == 0 )
                 context.GoNext();
         }
 

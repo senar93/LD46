@@ -621,7 +621,18 @@ MonoBehaviour:
         m_CallState: 2
   OnExit:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: a084c4ecc1c4e5f4f9591c2abb7396ea, type: 2}
+        m_MethodName: Invoke
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPlayerAction: {fileID: 11400000, guid: 68a499309457baa4dabf936462d2d529, type: 2}
 --- !u!1101 &4682236942149161410
 AnimatorStateTransition:

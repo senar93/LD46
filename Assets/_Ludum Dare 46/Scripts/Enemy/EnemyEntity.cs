@@ -2,6 +2,7 @@
     using Deirin.EB;
     using Sirenix.OdinInspector;
     using UnityEngine;
+    using UnityEngine.Events;
     using DG.Tweening;
 
     public class EnemyEntity : BaseEntity {
@@ -9,6 +10,7 @@
         public UnityEvent_Enemy OnMoveEnd;
         public UnityEvent_Enemy OnRotateEnd;
         public UnityEvent_Enemy OnAttackEnd;
+        public UnityEvent OnPlayerRotationEnd;
 
         [Range(0, 255)]
         public int attackActionIndex = 0;
@@ -57,7 +59,7 @@
         public void Rotate () {
             switch ( GetRotationAction() ) {
                 case RotateActionEnum.TurnLeft:
-                transform.DOLocalRotate( transform.localEulerAngles + Vector3.up * -90f, 30 ).SetSpeedBased().onComplete += () => OnRotateEnd.Invoke( this );         
+                transform.DOLocalRotate( transform.localEulerAngles + Vector3.up * -90f, 30 ).SetSpeedBased().onComplete += () => OnRotateEnd.Invoke( this );
                 break;
                 case RotateActionEnum.TurnRight:
                 transform.DOLocalRotate( transform.localEulerAngles + Vector3.up * 90f, 30 ).SetSpeedBased().onComplete += () => OnRotateEnd.Invoke( this );
@@ -71,6 +73,16 @@
             }
             enemyDirection = GetNewGlobalDirection();
             GoToNextRotationAction();
+        }
+
+        public void RotateLeft () {
+            transform.DOLocalRotate( transform.localEulerAngles + Vector3.up * -90f, 30 ).SetSpeedBased().onComplete += () => OnPlayerRotationEnd.Invoke();
+            enemyDirection = NewEntityDirection( RotateActionEnum.TurnLeft );
+        }
+
+        public void RotateRight () {
+            transform.DOLocalRotate( transform.localEulerAngles + Vector3.up * 90f, 30 ).SetSpeedBased().onComplete += () => OnPlayerRotationEnd.Invoke();
+            enemyDirection = NewEntityDirection( RotateActionEnum.TurnRight );
         }
         #endregion
 
@@ -178,6 +190,52 @@
 #endif
         }
 
+        private DirectionEnum NewEntityDirection ( RotateActionEnum rotation ) {
+            switch ( enemyDirection ) {
+                case DirectionEnum.Down:
+                switch ( rotation ) {
+                    case RotateActionEnum.TurnLeft:
+                    return DirectionEnum.Right;
+                    case RotateActionEnum.TurnRight:
+                    return DirectionEnum.Left;
+                    case RotateActionEnum.Turn180:
+                    return DirectionEnum.Up;
+                }
+                break;
+                case DirectionEnum.Right:
+                switch ( rotation ) {
+                    case RotateActionEnum.TurnLeft:
+                    return DirectionEnum.Up;
+                    case RotateActionEnum.TurnRight:
+                    return DirectionEnum.Down;
+                    case RotateActionEnum.Turn180:
+                    return DirectionEnum.Left;
+                }
+                break;
+                case DirectionEnum.Up:
+                switch ( rotation ) {
+                    case RotateActionEnum.TurnLeft:
+                    return DirectionEnum.Left;
+                    case RotateActionEnum.TurnRight:
+                    return DirectionEnum.Right;
+                    case RotateActionEnum.Turn180:
+                    return DirectionEnum.Down;
+                }
+                break;
+                case DirectionEnum.Left:
+                switch ( rotation ) {
+                    case RotateActionEnum.TurnLeft:
+                    return DirectionEnum.Down;
+                    case RotateActionEnum.TurnRight:
+                    return DirectionEnum.Up;
+                    case RotateActionEnum.Turn180:
+                    return DirectionEnum.Right;
+                }
+                break;
+            }
+
+            return enemyDirection;
+        }
     }
 
     public static class MonoBehaviourExtentions {
