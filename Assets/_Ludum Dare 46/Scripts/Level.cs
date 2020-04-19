@@ -16,6 +16,7 @@
         public void Setup () {
             foreach ( var cell in gridData.cells ) {
                 cell.originalPos = cell.transform.position;
+                cell.originalEulers = cell.transform.localEulerAngles;
                 cell.transform.position = hiddenPos.position;
                 cell.transform.localRotation = Quaternion.Euler( Random.Range( 0, 360 ), Random.Range( 0, 360 ), Random.Range( 0, 360 ) );
             }
@@ -26,7 +27,7 @@
 
             Cell c = gridData.cells[0,0];
             s.Append( c.transform.DOMove( c.originalPos, 1f ).SetEase( Ease.OutQuint ) );
-            s.Join( c.transform.DOLocalRotate( Vector3.zero, 1f ).SetEase( Ease.OutQuint ) );
+            s.Join( c.transform.DOLocalRotate( c.originalEulers, 1f ).SetEase( Ease.OutQuint ) );
 
             for ( int x = 0; x < gridData.cells.GetLength( 0 ); x++ ) {
                 for ( int y = 0; y < gridData.cells.GetLength( 1 ); y++ ) {
@@ -34,7 +35,7 @@
                         continue;
                     c = gridData.cells[x, y];
                     s.Insert( (x+y) * .2f, c.transform.DOMove( c.originalPos, 1.4f ).SetEase( Ease.OutQuint ) );
-                    s.Join( c.transform.DOLocalRotate( Vector3.zero, 1.4f ).SetEase( Ease.OutQuint ) );
+                    s.Join( c.transform.DOLocalRotate( c.originalEulers, 1.4f ).SetEase( Ease.OutQuint ) );
                 }
             }
 
