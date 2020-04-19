@@ -1,147 +1,199 @@
-﻿namespace LD46
-{
-	using Deirin.EB;
-	using Sirenix.OdinInspector;
-	using UnityEngine;
+﻿namespace LD46 {
+    using Deirin.EB;
+    using Sirenix.OdinInspector;
+    using UnityEngine;
+    using DG.Tweening;
 
-	public class EnemyEntity : BaseEntity
-	{
+    public class EnemyEntity : BaseEntity {
+        public UnityEvent_Enemy OnDeath;
+        public UnityEvent_Enemy OnMoveEnd;
+        public UnityEvent_Enemy OnRotateEnd;
+        public UnityEvent_Enemy OnAttackEnd;
 
-		[Range(0, 255)]
-		public int attackActionIndex = 0;
-		[Range(0, 255)]
-		public int movementActionIndex = 0;
-		[Range(0, 255)]
-		public int rotationActionIndex = 0;
+        [Range(0, 255)]
+        public int attackActionIndex = 0;
+        [Range(0, 255)]
+        public int movementActionIndex = 0;
+        [Range(0, 255)]
+        public int rotationActionIndex = 0;
 
-		public GridData currentGrid;
-		public Cell cell;
-		public DirectionEnum enemyDirection = DirectionEnum.Down;
+        public Cell cell;
+        public DirectionEnum enemyDirection = DirectionEnum.Down;
+        [HideInInspector] public GridData currentGrid;
+        [HideInInspector] public Egg egg;
 
-		protected override void CustomSetup () {
-			transform.position = cell.originalPos + Vector3.up * .5f;
-		}
+        protected override void CustomSetup () {
+            transform.position = cell.originalPos + Vector3.up * .5f;
+        }
 
-		#region API GET SOMETHING
-		/// <summary>
-		/// la lista delle celle in cui si muoverà l'entity, ordinate
-		/// </summary>
-		/// <returns></returns>
-		public Cell[] GetMovementCells()
-		{
-			MoveManager_Bh tmp;
-			if(TryGetBehaviour(out tmp))
-			{
-				return tmp.CurrentAction.SelectedCells;
-			}
+        #region API Gameplay
+        public void Die () {
+            OnDeath.Invoke( this );
+            Destroy( gameObject );
+        }
 
-			return null;
-		}
+        public void Attack () {
+            OnAttackEnd.Invoke( this );
+            GoToNextAttackAction();
+        }
 
-		/// <summary>
-		/// l'ultima cella in cui si muoverà l'entity
-		/// </summary>
-		/// <returns></returns>
-		public Cell GetMovementLastCell()
-		{
-			MoveManager_Bh tmp;
-			if (TryGetBehaviour(out tmp))
-			{
-				return tmp.CurrentAction.SelectedCells[tmp.CurrentAction.SelectedCells.Length - 1];
-			}
+        public void Move () {
+            //move and check egg
+            Sequence s = DOTween.Sequence();
+            foreach ( var cell in GetMovementCells() ) {
+                s.Append( transform.DOMove( cell.transform.position + Vector3.up * .5f, 3 ).SetSpeedBased() );
+                s.AppendCallback( () => CheckCell( cell ) );
+            }
+            s.onComplete += () => OnMoveEnd.Invoke( this );
+            GoToNextMovementAction();
 
-			return null;
-		}
+            void CheckCell ( Cell c ) {
+                cell = c;
+                if ( c == egg.cell )
+                    egg.Die();
+            }
+        }
 
-		/// <summary>
-		/// Restituisce la lista delle celle che verranno attaccate da questo nemico
-		/// </summary>
-		/// <returns></returns>
-		public Cell[] GetAttackTargets()
-		{
-			AttackManager_Bh tmp;
-			if (TryGetBehaviour(out tmp))
-			{
-				return tmp.CurrentAction.SelectedCells;
-			}
+        public void Rotate () {
+            switch ( GetRotationAction() ) {
+                case RotateActionEnum.TurnLeft:
+                transform.DOLocalRotate( transform.localEulerAngles + Vector3.up * -90f, 30 ).SetSpeedBased().onComplete += () => OnRotateEnd.Invoke( this );         
+                break;
+                case RotateActionEnum.TurnRight:
+                transform.DOLocalRotate( transform.localEulerAngles + Vector3.up * 90f, 30 ).SetSpeedBased().onComplete += () => OnRotateEnd.Invoke( this );
+                break;
+                case RotateActionEnum.Turn180:
+                transform.DOLocalRotate( transform.localEulerAngles + Vector3.up * 180f, 30 ).SetSpeedBased().onComplete += () => OnRotateEnd.Invoke( this );
+                break;
+                case RotateActionEnum.none:
+                OnRotateEnd.Invoke( this );
+                break;
+            }
+            enemyDirection = GetNewGlobalDirection();
+            GoToNextRotationAction();
+        }
+        #endregion
 
-			return null;
-		}
+        #region API GET SOMETHING
+        /// <summary>
+        /// la lista delle celle in cui si muoverà l'entity, ordinate
+        /// </summary>
+        /// <returns></returns>
+        public Cell[] GetMovementCells () {
+            MoveManager_Bh tmp;
+            if ( TryGetBehaviour( out tmp ) ) {
+                return tmp.CurrentAction.SelectedCells;
+            }
 
-		/// <summary>
-		/// da che lato sta ruotando entity
-		/// </summary>
-		/// <returns></returns>
-		public RotateActionEnum GetRotationAction()
-		{
-			RotationManager_Bh tmp;
-			if (TryGetBehaviour(out tmp))
-			{
-				return tmp.CurrentAction.rotation;
-			}
+            return null;
+        }
 
-			return RotateActionEnum.none;
-		}
+        /// <summary>
+        /// l'ultima cella in cui si muoverà l'entity
+        /// </summary>
+        /// <returns></returns>
+        public Cell GetMovementLastCell () {
+            MoveManager_Bh tmp;
+            if ( TryGetBehaviour( out tmp ) ) {
+                return tmp.CurrentAction.SelectedCells[tmp.CurrentAction.SelectedCells.Length - 1];
+            }
 
-		/// <summary>
-		/// la vera rotazione di entity
-		/// </summary>
-		/// <returns></returns>
-		public DirectionEnum GetNewGlobalDirection()
-		{
-			RotationManager_Bh tmp;
-			if (TryGetBehaviour(out tmp))
-			{
-				return tmp.CurrentAction.NewEntityDirection;
-			}
+            return null;
+        }
 
-			return enemyDirection;
-		}
+        /// <summary>
+        /// Restituisce la lista delle celle che verranno attaccate da questo nemico
+        /// </summary>
+        /// <returns></returns>
+        public Cell[] GetAttackTargets () {
+            AttackManager_Bh tmp;
+            if ( TryGetBehaviour( out tmp ) ) {
+                return tmp.CurrentAction.SelectedCells;
+            }
 
-		#endregion
+            return null;
+        }
 
-		#region API INDEX UPDATE
-		public void GoToNextMovementAction()
-		{
-			MoveManager_Bh tmp;
-			if (TryGetBehaviour(out tmp))
-			{
-				tmp.GoToNextAction();
-			}
-		}
+        /// <summary>
+        /// da che lato sta ruotando entity
+        /// </summary>
+        /// <returns></returns>
+        public RotateActionEnum GetRotationAction () {
+            RotationManager_Bh tmp;
+            if ( TryGetBehaviour( out tmp ) ) {
+                return tmp.CurrentAction.rotation;
+            }
 
-		public void GoToNextAttackAction()
-		{
-			AttackManager_Bh tmp;
-			if (TryGetBehaviour(out tmp))
-			{
-				tmp.GoToNextAction();
-			}
-		}
+            return RotateActionEnum.none;
+        }
 
-		public void GoToNextRotationAction()
-		{
-			RotationManager_Bh tmp;
-			if (TryGetBehaviour(out tmp))
-			{
-				tmp.GoToNextAction();
-			}
-		}
+        /// <summary>
+        /// la vera rotazione di entity
+        /// </summary>
+        /// <returns></returns>
+        public DirectionEnum GetNewGlobalDirection () {
+            RotationManager_Bh tmp;
+            if ( TryGetBehaviour( out tmp ) ) {
+                return tmp.CurrentAction.NewEntityDirection;
+            }
 
-		#endregion
+            return enemyDirection;
+        }
+
+        #endregion
+
+        #region API INDEX UPDATE
+        public void GoToNextMovementAction () {
+            MoveManager_Bh tmp;
+            if ( TryGetBehaviour( out tmp ) ) {
+                tmp.GoToNextAction();
+            }
+        }
+
+        public void GoToNextAttackAction () {
+            AttackManager_Bh tmp;
+            if ( TryGetBehaviour( out tmp ) ) {
+                tmp.GoToNextAction();
+            }
+        }
+
+        public void GoToNextRotationAction () {
+            RotationManager_Bh tmp;
+            if ( TryGetBehaviour( out tmp ) ) {
+                tmp.GoToNextAction();
+            }
+        }
+
+        #endregion
 
 
-		[Button("TEST!", ButtonSizes.Large), GUIColor(0.5f, 1f, 0.5f, 1f)]
-		private void SetAttackPattern()
-		{
-			Cell[] cells = GetAttackTargets();//GetCurrentMovementCells();
+        [Button( "TEST!", ButtonSizes.Large ), GUIColor( 0.5f, 1f, 0.5f, 1f )]
+        private void SetAttackPattern () {
+            Cell[] cells = GetAttackTargets();//GetCurrentMovementCells();
 #if UNITY_EDITOR
-			Debug.Log( "Player Position: " + cell.x + "," + cell.y );
-			Debug.Log( "Lenght: " + cells.Length );
-			for ( int i = 0; i < cells.Length; i++ )
-				Debug.Log( "Cells[ " + cells[i].x + " , " + cells[i].y + " ]" ); 
+            Debug.Log( "Player Position: " + cell.x + "," + cell.y );
+            Debug.Log( "Lenght: " + cells.Length );
+            for ( int i = 0; i < cells.Length; i++ )
+                Debug.Log( "Cells[ " + cells[i].x + " , " + cells[i].y + " ]" );
 #endif
-		}
+        }
 
-	}
+    }
+
+    public static class MonoBehaviourExtentions {
+        public static Vector3[] ToPositions ( this MonoBehaviour[] monos ) {
+            Vector3[] ts = new Vector3[monos.Length];
+            for ( int i = 0; i < monos.Length; i++ ) {
+                ts[i] = monos[i].transform.position;
+            }
+            return ts;
+        }
+
+        public static Vector3[] AddPosition ( this Vector3[] positions, Vector3 value ) {
+            for ( int i = 0; i < positions.Length; i++ ) {
+                positions[i] += value;
+            }
+            return positions;
+        }
+    }
 }

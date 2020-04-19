@@ -14,8 +14,15 @@
                 return;
             }
 
+            context.player.Moves = 1;
+
             OnPlayerAction.InvokeAction += PlayerActionHandler;
         }
+
+        //public override void Tick () {
+        //    if ( Input.GetKeyDown( KeyCode.Space ) )
+        //        OnPlayerAction.Invoke();
+        //}
 
         private void PlayerActionHandler () {
             context.player.Moves--;

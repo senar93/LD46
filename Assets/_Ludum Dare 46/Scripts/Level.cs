@@ -7,7 +7,7 @@
 
     public class Level : MonoBehaviour {
         [Title("Data")]
-        public GridData gridData;
+        [ReadOnly] public GridData gridData;
         [Min(0)] public int turns;
 
         [Title("References")]
@@ -16,12 +16,14 @@
         public Transform hiddenPos;
 
         [Header("Events")]
-        public UnityEvent OnSetup;
+        public UnityEvent OnSetupStart;
+        public UnityEvent OnSetupEnd;
 
         public System.Action OnActivationSequenceEnd;
         public bool EnemiesLeft => enemies.Count > 0;
 
         public void Setup () {
+            OnSetupStart.Invoke();
             foreach ( var cell in gridData.cells ) {
                 cell.originalPos = cell.transform.position;
                 cell.originalEulers = cell.transform.localEulerAngles;
@@ -30,9 +32,11 @@
             }
             foreach ( var enemy in enemies ) {
                 enemy.transform.position = hiddenPos.position;
+                enemy.egg = egg;
+                enemy.currentGrid = gridData;
             }
             egg.transform.position = hiddenPos.position;
-            OnSetup.Invoke();
+            OnSetupEnd.Invoke();
         }
 
         public float Activate () {
@@ -54,6 +58,10 @@
             s.onComplete += ActivationSequenceEndHandler;
 
             return s.Duration();
+        }
+
+        public void EnemyDeathHandler ( EnemyEntity enemy ) {
+            enemies.Remove( enemy );
         }
 
         private void ActivationSequenceEndHandler () {

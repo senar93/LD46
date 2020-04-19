@@ -34,6 +34,7 @@
         public ParticleSystem ambientParticle;
         public Player player;
         public GameObject mainMenu;
+        public GridData gridData;
 
         [HideInInspector] public Level currentLevel;
         [HideInInspector] public int currentLevelTurnsLeft;

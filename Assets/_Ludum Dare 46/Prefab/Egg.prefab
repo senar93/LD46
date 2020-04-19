@@ -219,6 +219,7 @@ GameObject:
   - component: {fileID: 6229489598313938809}
   - component: {fileID: 7077546804656527398}
   - component: {fileID: 2252853926259060899}
+  - component: {fileID: 9203639825128381056}
   m_Layer: 0
   m_Name: Egg
   m_TagString: Untagged
@@ -283,6 +284,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 9203639825128381056}
+        m_MethodName: Destroy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2252853926259060899
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -310,6 +322,32 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &9203639825128381056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6229489598313938808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1006332d46403ff428b6fa75e14a04a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  target: {fileID: 6229489598313938808}
+  delay: 0
+  OnDestruction:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &7873168497800695173
 PrefabInstance:
   m_ObjectHideFlags: 0

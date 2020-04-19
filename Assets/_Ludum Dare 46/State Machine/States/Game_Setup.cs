@@ -14,6 +14,7 @@
 
             foreach ( var level in context.levels ) {
                 level.Setup();
+                level.gridData = context.gridData;
                 LevelButton lb = Instantiate( levelButtonPrefab, context.levelButtonsContainer );
                 lb.Setup( level );
             }

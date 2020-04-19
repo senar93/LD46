@@ -1,7 +1,7 @@
 ﻿namespace LD46 {
     using System.Collections.Generic;
 
-    public class Game_TurnSimulation : GameStateBase {
+    public class Game_AttackPhase : GameStateBase {
         private List<EnemyEntity> tempEnemies = new List<EnemyEntity>();
 
         public override void Enter () {
@@ -29,6 +29,7 @@
             foreach ( var enemy in tempEnemies ) {
                 enemy.Die();
             }
+
             tempEnemies.Clear();
 
             //if no more enemies => go WIN
@@ -37,48 +38,13 @@
                 return;
             }
 
-            //move all enemies
-            foreach ( var enemy in context.currentLevel.enemies ) {
-                enemy.OnMoveEnd.AddListener( EnemyMoveEndHandler );
-                tempEnemies.Add( enemy );
-                enemy.Move();
-            }
-        }
-
-        //each time an enemy finishes movement
-        private void EnemyMoveEndHandler ( EnemyEntity enemy ) {
-            if ( tempEnemies.Contains( enemy ) )
-                tempEnemies.Remove( enemy );
-
-            //if all enemies finished movement
-            if ( tempEnemies.Count == 0 )
-                EnemiesRotationPhase();
-        }
-
-        private void EnemiesRotationPhase () {
-            foreach ( var rotatingEnemy in context.currentLevel.enemies ) {
-                rotatingEnemy.OnRotateEnd.AddListener( EnemyRotateEndHandler );
-                tempEnemies.Add( rotatingEnemy );
-                rotatingEnemy.Rotate();
-            }
-        }
-
-        //each time an enemy finishes rotation
-        private void EnemyRotateEndHandler ( EnemyEntity enemy ) {
-            if ( tempEnemies.Contains( enemy ) )
-                tempEnemies.Remove( enemy );
-
-            //if all enemies are done rotating => we go NEXT
-            if ( tempEnemies.Count == 0 )
-                context.GoNext();
+            context.GoNext();
         }
 
         public override void Exit () {
             base.Exit();
 
             tempEnemies.Clear();
-
-            context.currentLevelTurnsLeft--;
         }
     }
 }

@@ -157,51 +157,10 @@ MonoBehaviour:
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: conditions
-      Entry: 7
-      Data: 0|System.Collections.Generic.List`1[[LD46.AbsCondition, Assembly-CSharp]],
-        mscorlib
-    - Name: 
-      Entry: 12
-      Data: 2
-    - Name: 
-      Entry: 7
-      Data: 1|LD46.Conditions.MoveIndex, Assembly-CSharp
-    - Name: enemyEntity
-      Entry: 6
-      Data: 
-    - Name: comparrisonType
-      Entry: 3
-      Data: 0
-    - Name: indexToCompare
-      Entry: 3
-      Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 2|LD46.Conditions.AttackIndex, Assembly-CSharp
-    - Name: enemyEntity
-      Entry: 6
-      Data: 
-    - Name: comparrisonType
-      Entry: 3
-      Data: 0
-    - Name: indexToCompare
-      Entry: 3
-      Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-  index: 0
+    SerializationNodes: []
+  conditions:
+  - {fileID: 0}
+  - {fileID: 0}
   movement: 1
   nextMovementIndexValue: 0
 --- !u!1 &4420374847095849305
@@ -339,21 +298,8 @@ MonoBehaviour:
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: conditions
-      Entry: 7
-      Data: 0|System.Collections.Generic.List`1[[LD46.AbsCondition, Assembly-CSharp]],
-        mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-  index: 0
+    SerializationNodes: []
+  conditions: []
   rotation: 0
   nextRotationIndexValue: 0
 --- !u!1 &5841872225132067284
@@ -431,12 +377,36 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: c2920597b31c045448670913f0fadd44, type: 2}
+        m_MethodName: Invoke
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnMoveEnd:
+    m_PersistentCalls:
+      m_Calls: []
+  OnRotateEnd:
+    m_PersistentCalls:
+      m_Calls: []
+  OnAttackEnd:
+    m_PersistentCalls:
+      m_Calls: []
   attackActionIndex: 0
   movementActionIndex: 0
   rotationActionIndex: 0
-  currentGrid: {fileID: 0}
   cell: {fileID: 0}
   enemyDirection: 1
+  currentGrid: {fileID: 0}
+  egg: {fileID: 0}
 --- !u!114 &1563791582971972644
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -680,22 +650,9 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
-    - Name: conditions
-      Entry: 7
-      Data: 0|System.Collections.Generic.List`1[[LD46.AbsCondition, Assembly-CSharp]],
-        mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
     - Name: attackPattern
       Entry: 7
-      Data: 1|System.Boolean[,], mscorlib
+      Data: 0|System.Boolean[,], mscorlib
     - Name: 
       Entry: 12
       Data: 9
@@ -735,7 +692,7 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  index: 0
+  conditions: []
   radius: 1
   nextAttackIndexValue: 0
 --- !u!1001 &1483889548
