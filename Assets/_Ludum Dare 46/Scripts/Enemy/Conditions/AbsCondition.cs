@@ -5,7 +5,7 @@
 	using System.Collections.Generic;
 	using UnityEngine;
 
-	public abstract class AbsCondition
+	public abstract class AbsCondition : BaseBehaviour
 	{
 		public abstract bool Check();
 	}

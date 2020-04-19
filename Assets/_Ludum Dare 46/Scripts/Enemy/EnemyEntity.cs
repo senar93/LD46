@@ -18,6 +18,8 @@
 		public Cell cell;
 		public DirectionEnum enemyDirection = DirectionEnum.Down;
 
+		//public bool collideWithSomeone = false;
+
 
 		#region API GET SOMETHING
 		/// <summary>

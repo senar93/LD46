@@ -10,9 +10,6 @@
 
 	public class AttackIndex : AbsCondition
 	{
-		[Title("Pointers"), SerializeField]
-		private EnemyEntity enemyEntity;
-
 		[Title("Condition Parameters"), SerializeField]
 		private NumberComparisonType comparrisonType;
 		[SerializeField]
@@ -20,8 +17,7 @@
 
 		public override bool Check()
 		{
-			if (enemyEntity == null)
-				return false;
+			EnemyEntity enemyEntity = Entity as EnemyEntity;
 
 			return comparrisonType.Compare(enemyEntity.attackActionIndex, indexToCompare);
 		}
