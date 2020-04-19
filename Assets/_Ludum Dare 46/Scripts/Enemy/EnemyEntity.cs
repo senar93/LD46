@@ -17,7 +17,7 @@
 		//[ReadOnly]
 		public GridData currentGrid;
 		//[ReadOnly]
-		public Vector2Int gridPosition = new Vector2Int(0, 0);
+		public Cell cell;
 		//[ReadOnly]
 		public DirectionEnum enemyDirection = DirectionEnum.Up;
 
@@ -71,10 +71,12 @@
 		private void SetAttackPattern()
 		{
 			Cell[] cells = GetCurrentAttack();
-			Debug.Log("Player Position: " + gridPosition);
-			Debug.Log("Lenght: " + cells.Length);
-			for (int i = 0; i < cells.Length; i++)
-				Debug.Log("Cells[ " + cells[i].x + " , " + cells[i].y + " ]");
+#if UNITY_EDITOR
+			Debug.Log( "Player Position: " + cell.x + "," + cell.y );
+			Debug.Log( "Lenght: " + cells.Length );
+			for ( int i = 0; i < cells.Length; i++ )
+				Debug.Log( "Cells[ " + cells[i].x + " , " + cells[i].y + " ]" ); 
+#endif
 		}
 
 	}

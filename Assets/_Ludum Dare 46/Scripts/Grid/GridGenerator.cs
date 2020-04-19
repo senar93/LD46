@@ -46,6 +46,7 @@
                     Cell c = Instantiate( cellPrefab,
                         container.transform.position + startingOffset + specificOffset,
                         Quaternion.identity, container );
+                    c.gameObject.name = x.ToString() + "," + y.ToString();
                     c.x = x;
                     c.y = y;
                     cells[x, y] = c;

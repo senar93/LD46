@@ -18,8 +18,12 @@
 
     [Serializable]
     public class GameContext : IStateMachineData {
+        [Header("References")]
         public Level[] levels;
+        [HideInInspector] public Level currentLevel;
         public Transform levelButtonsContainer;
+        public ParticleSystem ambientParticle;
+
         public Action Next;
 
         public void GoNext () {

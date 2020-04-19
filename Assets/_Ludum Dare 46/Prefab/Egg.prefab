@@ -207,7 +207,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6229489598313938809}
-  - component: {fileID: 8903356313708345138}
+  - component: {fileID: 7077546804656527398}
   m_Layer: 0
   m_Name: Egg
   m_TagString: Untagged
@@ -231,7 +231,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8903356313708345138
+--- !u!114 &7077546804656527398
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -240,11 +240,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6229489598313938808}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1dd9776bf7fe879438919d4b23245eda, type: 3}
+  m_Script: {fileID: 11500000, guid: a25431f105d2af3428fbcecb1e67892d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  x: 0
-  y: 0
+  cell: {fileID: 0}
 --- !u!1001 &7873168497800695173
 PrefabInstance:
   m_ObjectHideFlags: 0

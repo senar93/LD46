@@ -11,7 +11,9 @@
 
         public override void Enter () {
             base.Enter();
+
             foreach ( var level in context.levels ) {
+                level.Setup();
                 LevelButton lb = Instantiate( levelButtonPrefab, context.levelButtonsContainer );
                 lb.Setup( level );
             }

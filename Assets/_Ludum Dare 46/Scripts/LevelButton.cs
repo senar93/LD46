@@ -16,5 +16,9 @@
             this.level = level;
             text.text = level.name;
         }
+
+        public void Click () {
+            OnClick.Invoke( level );
+        }
     }
 }

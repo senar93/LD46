@@ -45,9 +45,23 @@
             OnPlay.Invoke();
         }
 
+        public void PlayInfinite () {
+            noise.m_AmplitudeGain = amplitudeGain;
+            noise.m_FrequencyGain = frequencyGain;
+            noise.m_PivotOffset = pivotOffset;
+            OnPlay.Invoke();
+        }
+
         public void Stop () {
             s.Kill();
             End();
+        }
+
+        public void StopSmooth ( float duration ) {
+            Sequence smooth = DOTween.Sequence();
+            smooth.Append( DOTween.To( ( x ) => noise.m_AmplitudeGain = x, noise.m_AmplitudeGain, 0, duration ) );
+            smooth.Join( DOTween.To( ( x ) => noise.m_FrequencyGain = x, noise.m_FrequencyGain, 0, duration ) );
+            smooth.onComplete += End;
         }
 
         public void SetAmplitudeGain ( float value ) {
