@@ -1,10 +1,11 @@
 ﻿namespace Deirin.EB {
     using System.Collections.Generic;
-    using UnityEngine;
+    using UnityEngine.Events;
 	using Sirenix.OdinInspector;
 
     public abstract class BaseEntity : SerializedMonoBehaviour {
         public bool setupOnAwake = false;
+        public UnityEvent OnSetup;
 
         public BaseBehaviour[] Behaviours { get; private set; }
         public bool active { get; private set; }
@@ -16,6 +17,7 @@
             }
             active = true;
             CustomSetup();
+            OnSetup.Invoke();
         }
 
         protected virtual void CustomSetup () {

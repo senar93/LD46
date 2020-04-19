@@ -18,8 +18,9 @@
 		public Cell cell;
 		public DirectionEnum enemyDirection = DirectionEnum.Down;
 
-		//public bool collideWithSomeone = false;
-
+		protected override void CustomSetup () {
+			transform.position = cell.originalPos + Vector3.up * .5f;
+		}
 
 		#region API GET SOMETHING
 		/// <summary>
