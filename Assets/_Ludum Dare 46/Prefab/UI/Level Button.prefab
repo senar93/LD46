@@ -46,8 +46,9 @@ GameObject:
   - component: {fileID: 845014606981790414}
   - component: {fileID: 3114729995035469084}
   - component: {fileID: 5598528834712493503}
+  - component: {fileID: 4745492463895770135}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Level Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -207,6 +208,34 @@ MonoBehaviour:
   OnButtonClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4745492463895770135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1765164992982582615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28516f0d411b96e48a27b872d1f25f50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  level: {fileID: 0}
+  text: {fileID: 2377882326494106035}
+  OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 49cecce0c1f39784290bb46e94e35674, type: 2}
+        m_MethodName: Invoke
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3590545410164283053
 GameObject:
   m_ObjectHideFlags: 0
