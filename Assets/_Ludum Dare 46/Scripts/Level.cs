@@ -6,6 +6,7 @@
     public class Level : MonoBehaviour {
         [Title("Data")]
         public GridData gridData;
+
         [Title("References")]
         public EnemyEntity[] enemies;
         public Egg egg;
@@ -20,6 +21,10 @@
                 cell.transform.position = hiddenPos.position;
                 cell.transform.localRotation = Quaternion.Euler( Random.Range( 0, 360 ), Random.Range( 0, 360 ), Random.Range( 0, 360 ) );
             }
+            foreach ( var enemy in enemies ) {
+                enemy.transform.position = hiddenPos.position;
+            }
+            egg.transform.position = hiddenPos.position;
         }
 
         public float Activate () {
@@ -38,7 +43,6 @@
                     s.Join( c.transform.DOLocalRotate( c.originalEulers, 1.4f ).SetEase( Ease.OutQuint ) );
                 }
             }
-
             s.onComplete += ActivationSequenceEndHandler;
 
             return s.Duration();

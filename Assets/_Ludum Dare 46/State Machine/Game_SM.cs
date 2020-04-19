@@ -23,6 +23,7 @@
         [HideInInspector] public Level currentLevel;
         public Transform levelButtonsContainer;
         public ParticleSystem ambientParticle;
+        public Player player;
 
         public Action Next;
 
