@@ -1,5 +1,6 @@
 ﻿namespace LD46 {
     using UnityEngine;
+    using UnityEngine.Events;
     using Sirenix.OdinInspector;
     using DG.Tweening;
     using System.Collections.Generic;
@@ -13,6 +14,9 @@
         public List<EnemyEntity> enemies;
         public Egg egg;
         public Transform hiddenPos;
+
+        [Header("Events")]
+        public UnityEvent OnSetup;
 
         public System.Action OnActivationSequenceEnd;
         public bool EnemiesLeft => enemies.Count > 0;
@@ -28,6 +32,7 @@
                 enemy.transform.position = hiddenPos.position;
             }
             egg.transform.position = hiddenPos.position;
+            OnSetup.Invoke();
         }
 
         public float Activate () {

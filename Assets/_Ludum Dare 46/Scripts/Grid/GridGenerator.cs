@@ -21,7 +21,7 @@
 
         [SerializeField] private Cell[,] cells;
 
-        private void Awake () {
+        public void Setup () {
             gridData.cells = cells;
         }
 
