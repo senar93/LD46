@@ -8,11 +8,21 @@
 
         protected override void CustomDataSetup () {
             context.Next += Next;
+            context.Win += Win;
+            context.Loss += Loss;
             data = context;
         }
 
         private void Next () {
             animator.SetTrigger( "Next" );
+        }
+
+        private void Win () {
+            animator.SetTrigger( "Win" );
+        }
+
+        private void Loss () {
+            animator.SetTrigger( "Loss" );
         }
     }
 
@@ -26,10 +36,18 @@
         public Player player;
         public GameObject mainMenu;
 
-        public Action Next;
+        public Action Next, Win, Loss;
 
         public void GoNext () {
             Next.Invoke();
+        }
+
+        public void GoWin () {
+            Win.Invoke();
+        }
+
+        public void GoLoss () {
+            Loss.Invoke();
         }
     }
 }
