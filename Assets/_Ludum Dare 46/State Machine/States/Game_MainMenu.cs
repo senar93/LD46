@@ -24,6 +24,8 @@
         private void LevelButtonClickHandler ( Level level ) {
             context.currentLevel = level;
 
+            context.mainMenu.SetActive( false );
+
             ParticleSequence( level.Activate() );
             OnLevelActivationStart.Invoke();
 

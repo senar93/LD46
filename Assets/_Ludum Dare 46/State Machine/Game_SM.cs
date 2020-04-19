@@ -24,6 +24,7 @@
         public Transform levelButtonsContainer;
         public ParticleSystem ambientParticle;
         public Player player;
+        public GameObject mainMenu;
 
         public Action Next;
 
