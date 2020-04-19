@@ -6,6 +6,7 @@
 	using UnityEngine;
 	using Sirenix.OdinInspector;
 
+	[AddComponentMenu("_Ludum Dare 46/Enemy/Manager/Rotation Manager")]
 	public class RotationManager_Bh : AbsMananger_Bh<RotationAction_Bh>
 	{
 

@@ -6,6 +6,7 @@
 	using System.Collections.Generic;
 	using UnityEngine;
 
+	[AddComponentMenu("_Ludum Dare 46/Enemy/Actions/Move")]
 	public class MoveAction_Bh : AbsAction_Bh
 	{
 		[Title("Movement"), GUIColor(0.9f, 0.9f, 1f, 1f), Range(0, 10), SerializeField, Required, EnumToggleButtons]

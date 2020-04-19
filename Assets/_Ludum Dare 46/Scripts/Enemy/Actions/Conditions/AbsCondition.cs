@@ -5,9 +5,8 @@
 	using System.Collections.Generic;
 	using UnityEngine;
 
-	public class AttackManager_Bh : AbsMananger_Bh<AttackAction_Bh>
+	public abstract class AbsCondition : BaseBehaviour
 	{
-
+		public abstract bool Check();
 	}
-
 }

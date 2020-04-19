@@ -8,11 +8,9 @@
 	using SenarCustomSystem.Utility;
     using static SenarCustomSystem.Utility.ComparisonTypeUtility;
 
-    public class MoveIndex : AbsCondition
+	[AddComponentMenu("_Ludum Dare 46/Enemy/Conditions/Move Index")]
+	public class MoveIndex : AbsCondition
 	{
-		[Title("Pointers"), SerializeField]
-		private EnemyEntity enemyEntity;
-
 		[Title("Condition Parameters"), SerializeField]
 		private NumberComparisonType comparrisonType;
 		[SerializeField]
@@ -20,8 +18,7 @@
 
 		public override bool Check()
 		{
-			if (enemyEntity == null)
-				return false;
+			EnemyEntity enemyEntity = Entity as EnemyEntity;
 
 			return comparrisonType.Compare(enemyEntity.movementActionIndex, indexToCompare); 
 		}

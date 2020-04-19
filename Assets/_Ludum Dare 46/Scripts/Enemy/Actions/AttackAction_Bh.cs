@@ -5,7 +5,8 @@
     using UnityEngine;
     using Sirenix.OdinInspector;
 
-    public class AttackAction_Bh : AbsAction_Bh {
+	[AddComponentMenu("_Ludum Dare 46/Enemy/Actions/Attack")]
+	public class AttackAction_Bh : AbsAction_Bh {
         //pattern attacco da effettuare
         [Title("Parameters"), Range(1, 10), SerializeField, HideIf("attackPattern")]
         private int radius;
