@@ -17,7 +17,7 @@
 
         public override void Rewind () {
             target.DOKill();
-            target.DOMove( startPos, duration ).SetEase( ease ).SetLoops( loops ).onComplete += () => OnPlayEnd.Invoke();
+            target.DOMove( startPos, duration ).SetEase( ease ).SetLoops( loops, loopType ).onComplete += () => OnPlayEnd.Invoke();
         }
 
         public override void Play () {
@@ -25,7 +25,7 @@
             OnPlay.Invoke();
             if ( resetOnPlay == false )
                 startPos = target.position;
-            target.DOMove( addToOriginal ? startPos + targetPosition : targetPosition, duration ).SetEase( ease ).SetLoops( loops ).onComplete += () => OnPlayEnd.Invoke();
+            target.DOMove( addToOriginal ? startPos + targetPosition : targetPosition, duration ).SetEase( ease ).SetLoops( loops, loopType ).onComplete += () => OnPlayEnd.Invoke();
         }
 
         public override void Stop () {
