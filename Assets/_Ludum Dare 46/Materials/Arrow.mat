@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Enemy#3
+  m_Name: Arrow
   m_Shader: {fileID: 4800000, guid: 3e37035ecd6053a4fbfa859c760ac318, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -30,7 +30,7 @@ Material:
     m_Floats:
     - _DistanceInfluence: 0
     - _LightColorIntensity: 0
-    - _OutlineWidth: 1.5
+    - _OutlineWidth: 3
     m_Colors:
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
-    - _Tint: {r: 0.8117648, g: 0.8862746, b: 0.95294124, a: 1}
+    - _Tint: {r: 0.5943396, g: 1, b: 0.8039582, a: 1}
