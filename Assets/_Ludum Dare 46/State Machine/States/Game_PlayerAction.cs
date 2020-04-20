@@ -23,6 +23,8 @@
             OnPlayerActionBegin.InvokeAction += PlayerActionBeginHandler;
             OnPlayerActionEnd.InvokeAction += PlayerActionEndHandler;
             OnActionSkipButtonClick.InvokeAction += ActionSkipButtonClickHandler;
+
+            //check egg danger thing => ondanger;
         }
 
         private void ActionSkipButtonClickHandler () {
