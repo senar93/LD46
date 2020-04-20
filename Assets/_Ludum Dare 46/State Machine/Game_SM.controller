@@ -53,6 +53,31 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!1101 &-7487544521721289918
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: Next
+    m_EventTreshold: 0
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: 5886291586455301604}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0
+  m_TransitionOffset: 0
+  m_ExitTime: 0
+  m_HasExitTime: 0
+  m_HasFixedDuration: 0
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
 --- !u!1107 &-7158303022468835429
 AnimatorStateMachine:
   serializedVersion: 5
@@ -215,10 +240,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnEnter:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 526a009303d3e454385524969654bdee, type: 2}
+        m_MethodName: Invoke
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnExit:
     m_PersistentCalls:
       m_Calls: []
+  OnLevelEndButtonClick: {fileID: 11400000, guid: 5ce49b149f7edce4d85d5100cae14972,
+    type: 2}
 --- !u!114 &-3004074289793917194
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -332,7 +370,8 @@ AnimatorState:
   m_Name: Loss
   m_Speed: 1
   m_CycleOffset: 0
-  m_Transitions: []
+  m_Transitions:
+  - {fileID: -7487544521721289918}
   m_StateMachineBehaviours:
   - {fileID: 2846388999994372282}
   m_Position: {x: 50, y: 50, z: 0}
@@ -439,7 +478,8 @@ AnimatorState:
   m_Name: Win
   m_Speed: 1
   m_CycleOffset: 0
-  m_Transitions: []
+  m_Transitions:
+  - {fileID: 2436480135895609953}
   m_StateMachineBehaviours:
   - {fileID: -4735222639761069996}
   m_Position: {x: 50, y: 50, z: 0}
@@ -456,6 +496,31 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!1101 &2436480135895609953
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: Next
+    m_EventTreshold: 0
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: 5886291586455301604}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0
+  m_TransitionOffset: 0
+  m_ExitTime: 0
+  m_HasExitTime: 0
+  m_HasFixedDuration: 0
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
 --- !u!114 &2846388999994372282
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -470,10 +535,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnEnter:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: fd81c658f77010f4fae33c87f43ec180, type: 2}
+        m_MethodName: Invoke
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnExit:
     m_PersistentCalls:
       m_Calls: []
+  OnLevelEndButtonClick: {fileID: 11400000, guid: 5ce49b149f7edce4d85d5100cae14972,
+    type: 2}
 --- !u!114 &3333214751848001566
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -488,11 +566,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnEnter:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: ca5a75babd9698c4a827793cd5d53c9c, type: 2}
+        m_MethodName: Invoke
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnExit:
     m_PersistentCalls:
       m_Calls: []
   OnLevelButtonClick: {fileID: 11400000, guid: 49cecce0c1f39784290bb46e94e35674, type: 2}
+  OnScreenFadeIn: {fileID: 11400000, guid: d8d3251783a80584dbb883e8a4189ea1, type: 2}
   OnLevelActivationStart:
     m_PersistentCalls:
       m_Calls:
@@ -778,7 +868,6 @@ MonoBehaviour:
       m_Calls: []
   levelButtonPrefab: {fileID: 4745492463895770135, guid: 597dd006902ab6f4eae87d4e67d3a349,
     type: 3}
-  OnScreenFadeIn: {fileID: 11400000, guid: d8d3251783a80584dbb883e8a4189ea1, type: 2}
 --- !u!1102 &7649511715667132007
 AnimatorState:
   serializedVersion: 5
