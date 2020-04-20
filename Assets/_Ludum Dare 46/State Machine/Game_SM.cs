@@ -4,6 +4,8 @@
     using System.Collections.Generic;
     using UnityEngine;
     using Deirin.CustomButton;
+    using Deirin.Tweeners;
+    using DG.Tweening;
 
     public class Game_SM : StateMachineBase {
         public GameContext context;
@@ -35,10 +37,11 @@
         public Transform levelButtonsContainer;
         public ParticleSystem ambientParticle;
         public Player player;
-        public GameObject mainMenu;
+        public CanvasGroup mainMenu;
         public GridData gridData;
         public CounterUI turnCounter;
         public CustomButton_Canvas skipActionButton;
+        public CanvasGroup screenFader;
 
         [HideInInspector] public Level currentLevel;
         [HideInInspector] public int currentLevelTurnsLeft;

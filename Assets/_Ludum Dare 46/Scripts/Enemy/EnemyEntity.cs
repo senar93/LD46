@@ -179,6 +179,16 @@
                 cell.Highlight();
             }
         }
+
+        public void Deselect () {
+            foreach ( var cell in GetMovementCells() ) {
+                cell.NoHighlight();
+            }
+
+            foreach ( var cell in GetAttackTargets() ) {
+                cell.NoHighlight();
+            }
+        }
         #endregion
 
         #region API GET SOMETHING

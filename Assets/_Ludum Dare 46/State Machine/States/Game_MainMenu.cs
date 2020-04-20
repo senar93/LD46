@@ -2,6 +2,7 @@
     using UnityEngine;
     using UnityEngine.Events;
     using DG.Tweening;
+    using Deirin.Utilities;
 
     public class Game_MainMenu : GameStateBase {
         [Space, Header("Event Listeners")]
@@ -18,7 +19,14 @@
         }
 
         public override void Enter () {
-            OnLevelButtonClick.InvokeAction += LevelButtonClickHandler;
+            base.Enter();
+
+            context.mainMenu.gameObject.SetActive( true );
+
+            context.currentLevel?.gameObject.SetActive( false );
+
+            context.screenFader.blocksRaycasts = true;
+            context.screenFader.DOFade( 0, 1 ).onComplete += ScreenFadeInHandler;
         }
 
         private void LevelButtonClickHandler ( Level level ) {
@@ -26,7 +34,7 @@
             context.currentLevel.gameObject.SetActive( true );
             context.currentLevel.Setup();
 
-            context.mainMenu.SetActive( false );
+            context.mainMenu.DOFade( 0, .5f );
 
             level.Activate();
             ParticleSequence( true );
@@ -51,7 +59,14 @@
             }
         }
 
+        private void ScreenFadeInHandler () {
+            context.screenFader.blocksRaycasts = false;
+            OnLevelButtonClick.InvokeAction += LevelButtonClickHandler;
+        }
+
         public override void Exit () {
+            base.Exit();
+
             OnLevelButtonClick.InvokeAction -= LevelButtonClickHandler;
             context.currentLevel.OnActivationEnd.RemoveListener( LevelActivationHandler );
         }

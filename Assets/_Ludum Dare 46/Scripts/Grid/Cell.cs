@@ -15,6 +15,7 @@
         public UnityEvent OnAttackHide;
         public UnityEvent OnAttackHighlight;
         public UnityEvent OnMovementHighlight;
+        public UnityEvent OnNoHighlight;
 
         private bool attack, movement;
 
@@ -39,6 +40,10 @@
                 OnAttackHighlight.Invoke();
             if ( movement )
                 OnMovementHighlight.Invoke();
+        }
+
+        public void NoHighlight () {
+            OnNoHighlight.Invoke();
         }
     }
 }

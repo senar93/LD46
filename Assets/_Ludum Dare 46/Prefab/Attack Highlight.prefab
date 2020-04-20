@@ -64,9 +64,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   target: {fileID: 7977933005993515031}
-  targetScale: {x: 1.3, y: 0, z: 1.3}
+  targetScale: {x: 1.3, y: 1.3, z: 1}
   addToOriginal: 0
-  multiply: 0
+  multiply: 1
   resetOnPlay: 1
 --- !u!1 &4671411469662051672
 GameObject:
@@ -135,7 +135,7 @@ MonoBehaviour:
   targetTransformPosition: {fileID: 0}
   startingTransfrormPosition: {fileID: 0}
   targetPosition: {x: 0, y: 0.2, z: 0}
-  addToOriginal: 0
+  addToOriginal: 1
   resetOnPlay: 1
 --- !u!1 &5079571067835509121
 GameObject:
@@ -252,9 +252,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   target: {fileID: 7977933005993515031}
-  targetScale: {x: 0, y: 0.7, z: 0}
+  targetScale: {x: 1, y: 1, z: 0.7}
   addToOriginal: 0
-  multiply: 0
+  multiply: 1
   resetOnPlay: 1
 --- !u!114 &8253602677185268188
 MonoBehaviour:
@@ -278,7 +278,18 @@ MonoBehaviour:
       m_Calls: []
   OnRewind:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4854917081785248593}
+        m_MethodName: Stop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnPlayEnd:
     m_PersistentCalls:
       m_Calls:
@@ -300,7 +311,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   target: {fileID: 7977933005993515031}
-  targetScale: {x: 1, y: 1, z: 1}
+  targetScale: {x: 0.25, y: 0.25, z: 0.25}
   addToOriginal: 0
   multiply: 0
   resetOnPlay: 1
@@ -440,17 +451,17 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 7c00de913ef01394eb31205875a60762,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.25
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 7c00de913ef01394eb31205875a60762,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.25
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 7c00de913ef01394eb31205875a60762,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.25
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -1504981713932161579, guid: 7c00de913ef01394eb31205875a60762,
         type: 3}
