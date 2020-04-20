@@ -23,6 +23,8 @@
 
         private void LevelButtonClickHandler ( Level level ) {
             context.currentLevel = level;
+            context.currentLevel.gameObject.SetActive( true );
+            context.currentLevel.Setup();
 
             context.mainMenu.SetActive( false );
 

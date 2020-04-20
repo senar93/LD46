@@ -13,7 +13,7 @@
             base.Enter();
 
             foreach ( var level in context.levels ) {
-                level.Setup();
+                level.gameObject.SetActive( false );
                 level.gridData = context.gridData;
                 LevelButton lb = Instantiate( levelButtonPrefab, context.levelButtonsContainer );
                 lb.Setup( level );
