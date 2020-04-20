@@ -1,6 +1,7 @@
 ﻿namespace LD46 {
     using Deirin.StateMachine;
     using System;
+    using System.Collections.Generic;
     using UnityEngine;
 
     public class Game_SM : StateMachineBase {
@@ -29,7 +30,7 @@
     [Serializable]
     public class GameContext : IStateMachineData {
         [Header("References")]
-        public Level[] levels;
+        public List<Level> levels;
         public Transform levelButtonsContainer;
         public ParticleSystem ambientParticle;
         public Player player;

@@ -4,8 +4,9 @@
     using Sirenix.OdinInspector;
     using DG.Tweening;
     using System.Collections.Generic;
+	using System.Linq;
 
-    public class Level : MonoBehaviour {
+    public class Level : SerializedMonoBehaviour {
         [Title("Data")]
         [ReadOnly] public GridData gridData;
         [Min(0)] public int turns;
@@ -67,5 +68,26 @@
         private void ActivationSequenceEndHandler () {
             OnActivationSequenceEnd?.Invoke();
         }
-    }
+
+		#region EDITOR
+		[Button("Fill Enemies", ButtonSizes.Gigantic), GUIColor(0.5f, 1f, 0.5f, 1f)]
+		public  void FillEnemies()
+		{
+			enemies.Clear();
+			enemies = GetComponentsInChildren<EnemyEntity>().ToList();
+		}
+
+
+		[Button("Add to Game State Machine", ButtonSizes.Gigantic), GUIColor(0.5f, 1f, 0.5f, 1f)]
+		public void AddToGameStateMachine()
+		{
+			Game_SM tmp = FindObjectOfType<Game_SM>();
+			if(!tmp.context.levels.Contains(this))
+			{
+				tmp.context.levels.Add(this);
+			}
+		}
+		#endregion
+
+	}
 }
