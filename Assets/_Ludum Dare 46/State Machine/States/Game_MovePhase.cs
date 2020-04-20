@@ -49,6 +49,9 @@
         private void Unsubscribe () {
             OnEnemyDeath.InvokeAction -= EnemyDeathHandler;
             OnEggDeath.InvokeAction -= EggDeathHandler;
+            foreach ( var enemy in tempEnemies ) {
+                enemy.OnMoveEnd.RemoveListener( EnemyMoveEndHandler );
+            }
         }
 
         public override void Exit () {

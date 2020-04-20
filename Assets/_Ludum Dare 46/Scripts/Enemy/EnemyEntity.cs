@@ -4,6 +4,7 @@
     using UnityEngine;
     using UnityEngine.Events;
     using DG.Tweening;
+    using System.Collections.Generic;
 
     public class EnemyEntity : BaseEntity {
         [Header("References")]
@@ -71,6 +72,7 @@
         private int attackCount;
         private Interpolator tempInterpolator;
         private Cell[] tempCells;
+        private List<EnemyEntity> tempEnemies = new List<EnemyEntity>();
 
         protected override void CustomSetup () {
             transform.position = cell.originalPos + Vector3.up * .5f;
@@ -78,6 +80,7 @@
 
         #region API Gameplay
         public void Die () {
+            this.DOKill();
             OnDeath.Invoke( this );
         }
 
@@ -111,13 +114,21 @@
                 cell = c;
                 if ( c == level.egg.cell )
                     level.egg.Die();
-                else
+                else {
                     foreach ( var enemy in level.enemies ) {
                         if ( enemy != this && enemy.cell == c ) {
-                            enemy.Die();
-                            this.Die();
+                            tempEnemies.Add( enemy );
                         }
                     }
+                    //OMG PAZZESCO: se i nemici nella cella sono dispari non muoiono tutti!!!!
+                    if ( tempEnemies.Count > 0 ) {
+                        foreach ( var enemy in tempEnemies ) {
+                            enemy.Die();
+                        }
+                        tempEnemies.Clear();
+                        this.Die();
+                    }
+                }
             }
 
             OnMoveStart.Invoke();
@@ -317,9 +328,14 @@
                 }
 
                 if ( enemy.cell == c ) {
-                    enemy.Die();
+                    tempEnemies.Add( enemy );
                 }
             }
+
+            foreach ( var enemy in tempEnemies ) {
+                enemy.Die();
+            }
+            tempEnemies.Clear();
 
             if ( attackCount == 0 )
                 OnAttackEnd.Invoke( this );

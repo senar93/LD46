@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Unlit_SDF_QuadBorder
+  m_Shader: {fileID: 4800000, guid: a9e4903400258e341a373a5bb5c8c1e1, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Floats:
+    - _SizeX: 0.45
+    - _SizeY: 0.45
+    - _SmoothstepMax: 0.01
+    - _SmoothstepMin: 0
+    - _Thickness: 0.016
+    m_Colors:
+    - _Color: {r: 0.2971698, g: 1, b: 0.65484923, a: 1}

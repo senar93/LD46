@@ -11,7 +11,7 @@
     }
     SubShader
     {
-        Tags { "RenderType"="Transparent" }
+        Tags { "QUEUE" = "Transparent" "IGNOREPROJECTOR" = "true" "RenderType"="Transparent" }
         LOD 100
 
 		Blend One OneMinusSrcAlpha
