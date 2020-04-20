@@ -549,7 +549,8 @@ PrefabInstance:
         type: 3}
       propertyPath: serializationData.Prefab
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 9060431653562079423, guid: f0e9c6ea3fa8bb7489f311be54c4eb9d,
+        type: 3}
     - target: {fileID: 9060431653562079423, guid: f0e9c6ea3fa8bb7489f311be54c4eb9d,
         type: 3}
       propertyPath: cell
@@ -843,10 +844,7 @@ MonoBehaviour:
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: OnActivationSequenceEnd
-      Entry: 6
-      Data: 
+    SerializationNodes: []
   gridData: {fileID: 11400000, guid: 7f500b1070e62f942b6a9a45e4e46170, type: 2}
   turns: 4
   enemies:
@@ -868,6 +866,12 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   OnSetupEnd:
+    m_PersistentCalls:
+      m_Calls: []
+  OnActivationStart:
+    m_PersistentCalls:
+      m_Calls: []
+  OnActivationEnd:
     m_PersistentCalls:
       m_Calls: []
 --- !u!224 &123163844 stripped
@@ -2074,7 +2078,8 @@ PrefabInstance:
         type: 3}
       propertyPath: serializationData.Prefab
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 9060431653562079423, guid: f0e9c6ea3fa8bb7489f311be54c4eb9d,
+        type: 3}
     - target: {fileID: 9060431653562079423, guid: f0e9c6ea3fa8bb7489f311be54c4eb9d,
         type: 3}
       propertyPath: cell
@@ -7475,10 +7480,7 @@ MonoBehaviour:
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: OnActivationSequenceEnd
-      Entry: 6
-      Data: 
+    SerializationNodes: []
   gridData: {fileID: 11400000, guid: 7f500b1070e62f942b6a9a45e4e46170, type: 2}
   turns: 3
   enemies:
@@ -7502,6 +7504,12 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   OnSetupEnd:
+    m_PersistentCalls:
+      m_Calls: []
+  OnActivationStart:
+    m_PersistentCalls:
+      m_Calls: []
+  OnActivationEnd:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1001 &1075458778
@@ -8080,6 +8088,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65aa273316df9b74cace8d6103ecc3ce, type: 3}
+--- !u!225 &1123137310 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 8011090188229630702, guid: cd476f36a84c0ec43bce6d98b5411ad9,
+    type: 3}
+  m_PrefabInstance: {fileID: 4767670496203534833}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1126281654
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8428,7 +8442,8 @@ PrefabInstance:
         type: 3}
       propertyPath: serializationData.Prefab
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 9060431653562079423, guid: f0e9c6ea3fa8bb7489f311be54c4eb9d,
+        type: 3}
     - target: {fileID: 9060431653562079423, guid: f0e9c6ea3fa8bb7489f311be54c4eb9d,
         type: 3}
       propertyPath: cell
@@ -10055,7 +10070,8 @@ PrefabInstance:
         type: 3}
       propertyPath: serializationData.Prefab
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 9060431653562079423, guid: f0e9c6ea3fa8bb7489f311be54c4eb9d,
+        type: 3}
     - target: {fileID: 9060431653562079423, guid: f0e9c6ea3fa8bb7489f311be54c4eb9d,
         type: 3}
       propertyPath: cell
@@ -10303,7 +10319,8 @@ PrefabInstance:
         type: 3}
       propertyPath: serializationData.Prefab
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 9060431653562079423, guid: f0e9c6ea3fa8bb7489f311be54c4eb9d,
+        type: 3}
     - target: {fileID: 9060431653562079423, guid: f0e9c6ea3fa8bb7489f311be54c4eb9d,
         type: 3}
       propertyPath: cell
@@ -13051,10 +13068,11 @@ MonoBehaviour:
     levelButtonsContainer: {fileID: 123163844}
     ambientParticle: {fileID: 1571185832}
     player: {fileID: 1246056831}
-    mainMenu: {fileID: 4767670496203534834}
+    mainMenu: {fileID: 4767670496203534836}
     gridData: {fileID: 11400000, guid: 7f500b1070e62f942b6a9a45e4e46170, type: 2}
     turnCounter: {fileID: 895664740}
     skipActionButton: {fileID: 1852853816}
+    screenFader: {fileID: 1123137310}
     currentLevel: {fileID: 0}
     currentLevelTurnsLeft: 0
 --- !u!1001 &1720666197
@@ -14022,10 +14040,7 @@ MonoBehaviour:
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: OnActivationSequenceEnd
-      Entry: 6
-      Data: 
+    SerializationNodes: []
   gridData: {fileID: 11400000, guid: 7f500b1070e62f942b6a9a45e4e46170, type: 2}
   turns: 4
   enemies:
@@ -14051,6 +14066,12 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   OnSetupEnd:
+    m_PersistentCalls:
+      m_Calls: []
+  OnActivationStart:
+    m_PersistentCalls:
+      m_Calls: []
+  OnActivationEnd:
     m_PersistentCalls:
       m_Calls: []
 --- !u!4 &1937675522 stripped
@@ -14735,10 +14756,7 @@ MonoBehaviour:
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: OnActivationSequenceEnd
-      Entry: 6
-      Data: 
+    SerializationNodes: []
   gridData: {fileID: 11400000, guid: 7f500b1070e62f942b6a9a45e4e46170, type: 2}
   turns: 4
   enemies:
@@ -14764,6 +14782,12 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   OnSetupEnd:
+    m_PersistentCalls:
+      m_Calls: []
+  OnActivationStart:
+    m_PersistentCalls:
+      m_Calls: []
+  OnActivationEnd:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &2061529920
@@ -15694,17 +15718,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 631646834, guid: cd476f36a84c0ec43bce6d98b5411ad9, type: 3}
+    - target: {fileID: 109506914641997430, guid: cd476f36a84c0ec43bce6d98b5411ad9,
+        type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 631646834, guid: cd476f36a84c0ec43bce6d98b5411ad9, type: 3}
+    - target: {fileID: 109506914641997430, guid: cd476f36a84c0ec43bce6d98b5411ad9,
+        type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 908634410, guid: cd476f36a84c0ec43bce6d98b5411ad9, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3601546274677254370, guid: cd476f36a84c0ec43bce6d98b5411ad9,
         type: 3}
@@ -15841,11 +15863,21 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5053414828426324490, guid: cd476f36a84c0ec43bce6d98b5411ad9,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5053414828426324490, guid: cd476f36a84c0ec43bce6d98b5411ad9,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd476f36a84c0ec43bce6d98b5411ad9, type: 3}
---- !u!1 &4767670496203534834 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 463272055662256726, guid: cd476f36a84c0ec43bce6d98b5411ad9,
+--- !u!225 &4767670496203534836 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 2910318722959107049, guid: cd476f36a84c0ec43bce6d98b5411ad9,
     type: 3}
   m_PrefabInstance: {fileID: 4767670496203534833}
   m_PrefabAsset: {fileID: 0}

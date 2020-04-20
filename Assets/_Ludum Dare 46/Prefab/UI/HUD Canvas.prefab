@@ -1764,7 +1764,7 @@ MonoBehaviour:
         m_MethodName: Invoke
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 9060431653562079423, guid: 16e917e473bf6a14c93cd65780154a81,
+          m_ObjectArgument: {fileID: 9060431653562079423, guid: 849dc47b648430c409eb6b297b78baea,
             type: 3}
           m_ObjectArgumentAssemblyTypeName: LD46.EnemyEntity, Assembly-CSharp
           m_IntArgument: 0

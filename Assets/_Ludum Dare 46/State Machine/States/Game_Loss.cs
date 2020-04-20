@@ -1,6 +1,7 @@
 ﻿namespace LD46 {
     using Deirin.Utilities;
     using DG.Tweening;
+    using UnityEngine.SceneManagement;
 
     public class Game_Loss : GameStateBase {
         public GameEvent OnLevelEndButtonClick;
@@ -17,9 +18,7 @@
         }
 
         private void FadeOutHandler () {
-            context.screenFader.blocksRaycasts = false;
-            context.mainMenu.alpha = 1;
-            context.GoNext();
+            SceneManager.LoadScene( SceneManager.GetActiveScene().buildIndex );
         }
 
         public override void Exit () {
