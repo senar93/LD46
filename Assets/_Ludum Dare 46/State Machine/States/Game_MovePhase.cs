@@ -1,8 +1,10 @@
 ﻿namespace LD46 {
     using System.Collections.Generic;
+    using Deirin.Utilities;
 
     public class Game_MovePhase : GameStateBase {
         public GameEvent_Enemy OnEnemyDeath;
+        public GameEvent OnEggDeath;
 
         private List<EnemyEntity> tempEnemies = new List<EnemyEntity>();
 
@@ -10,6 +12,7 @@
             base.Enter();
 
             OnEnemyDeath.InvokeAction += EnemyDeathHandler;
+            OnEggDeath.InvokeAction += EggDeathHandler;
 
             //move all enemies
             foreach ( var enemy in context.currentLevel.enemies ) {
@@ -17,6 +20,10 @@
                 tempEnemies.Add( enemy );
                 enemy.Move();
             }
+        }
+
+        private void EggDeathHandler () {
+            context.GoLoss();
         }
 
         //each time an enemy finishes movement
@@ -38,6 +45,9 @@
             base.Exit();
 
             tempEnemies.Clear();
+
+            OnEnemyDeath.InvokeAction -= EnemyDeathHandler;
+            OnEggDeath.InvokeAction -= EggDeathHandler;
         }
     }
 }
