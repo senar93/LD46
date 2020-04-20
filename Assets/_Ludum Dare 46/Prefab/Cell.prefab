@@ -451,6 +451,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Movement Highlight
       objectReference: {fileID: 0}
+    - target: {fileID: 6051245872932320622, guid: 060ea8a5264daf34d98b6502d467bb63,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6051245872932320622, guid: 060ea8a5264daf34d98b6502d467bb63,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.87058824
+      objectReference: {fileID: 0}
+    - target: {fileID: 6051245872932320622, guid: 060ea8a5264daf34d98b6502d467bb63,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.22745098
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 060ea8a5264daf34d98b6502d467bb63, type: 3}
 --- !u!4 &8154757412155003810 stripped
