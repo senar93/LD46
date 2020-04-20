@@ -6,7 +6,7 @@
     using DG.Tweening;
 
     public class EnemyEntity : BaseEntity {
-        public UnityEvent_Enemy OnDeath;
+		public UnityEvent_Enemy OnDeath;
         [Header("Movement")]
         public UnityEvent OnMoveStart;
         public UnityEvent_Enemy OnMoveEnd;
@@ -25,13 +25,17 @@
         [Range(0, 255)]
         public int rotationActionIndex = 0;
 
-        public Cell cell;
-		[HideInInspector]
-        public DirectionEnum enemyDirection = DirectionEnum.Down;
+		[ShowInInspector]
+		private Cell InspectorCell {
+			get => cell;
+			set {
+				cell = value;
+				this.transform.position = cell.transform.position + Vector3.up * 0.5f;
+			}
+		}
 		[ShowInInspector]
 		private DirectionEnum InspectorEnemyDirection {
-			get 
-			{
+			get {
 				return enemyDirection;
 			}
 			set {
@@ -54,6 +58,11 @@
 			}
 		}
 
+
+		[HideInInspector]
+		public Cell cell;
+		[HideInInspector]
+        public DirectionEnum enemyDirection = DirectionEnum.Down;
 		[HideInInspector] public GridData currentGrid;
         [HideInInspector] public Egg egg;
 

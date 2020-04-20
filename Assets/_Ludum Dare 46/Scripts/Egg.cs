@@ -1,9 +1,10 @@
 ﻿namespace LD46 {
     using UnityEngine;
     using UnityEngine.Events;
+	using Sirenix.OdinInspector;
 
     public class Egg : MonoBehaviour {
-        [Header("Refs")]
+        [Header("Refs"), Required]
         public Cell cell;
 
         [Header("Events")]
