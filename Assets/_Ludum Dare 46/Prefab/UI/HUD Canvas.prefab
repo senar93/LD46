@@ -731,7 +731,7 @@ MonoBehaviour:
     m_Bottom: 0
   m_ChildAlignment: 3
   m_Spacing: 4
-  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 1
   m_ChildControlHeight: 0
@@ -787,6 +787,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 5940869734419153623, guid: f755c97460f9fc346b14741a56062b48, type: 3}
   container: {fileID: 6597679954627345492}
+  horizontalLayoutGroup: {fileID: 5171672517226911538}
 --- !u!1 &463272055662256726
 GameObject:
   m_ObjectHideFlags: 0
@@ -1608,7 +1609,7 @@ MonoBehaviour:
     m_Bottom: 0
   m_ChildAlignment: 3
   m_Spacing: 4
-  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 1
   m_ChildControlHeight: 0
@@ -1628,6 +1629,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 5940869734419153623, guid: f755c97460f9fc346b14741a56062b48, type: 3}
   container: {fileID: 4767670495928051378}
+  horizontalLayoutGroup: {fileID: 4767670495928051381}
 --- !u!1 &4767670496704486576
 GameObject:
   m_ObjectHideFlags: 0

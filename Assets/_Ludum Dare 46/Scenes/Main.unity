@@ -6350,10 +6350,25 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4767670495928051381, guid: cd476f36a84c0ec43bce6d98b5411ad9,
+        type: 3}
+      propertyPath: m_ChildControlWidth
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4767670496704486579, guid: cd476f36a84c0ec43bce6d98b5411ad9,
         type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4767670496704486579, guid: cd476f36a84c0ec43bce6d98b5411ad9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -269
+      objectReference: {fileID: 0}
+    - target: {fileID: 4767670496704486579, guid: cd476f36a84c0ec43bce6d98b5411ad9,
+        type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd476f36a84c0ec43bce6d98b5411ad9, type: 3}

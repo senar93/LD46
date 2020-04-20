@@ -7,10 +7,16 @@
 
     public class EnemyEntity : BaseEntity {
         public UnityEvent_Enemy OnDeath;
+        [Header("Movement")]
+        public UnityEvent OnMoveStart;
         public UnityEvent_Enemy OnMoveEnd;
+        [Header("Rotation")]
+        public UnityEvent OnRotateRight;
+        public UnityEvent OnRotateLeft;
         public UnityEvent_Enemy OnRotateEnd;
-        public UnityEvent_Enemy OnAttackEnd;
         public UnityEvent OnPlayerRotationEnd;
+        [Header("Attack")]
+        public UnityEvent_Enemy OnAttackEnd;
 
         [Range(0, 255)]
         public int attackActionIndex = 0;
@@ -70,7 +76,7 @@
             //move and check egg
             Sequence s = DOTween.Sequence();
             foreach ( var cell in GetMovementCells() ) {
-                s.Append( transform.DOMove( cell.transform.position + Vector3.up * .5f, 3 ).SetSpeedBased() );
+                s.Append( transform.DOMove( cell.transform.position + Vector3.up * .5f, 1.5f ).SetEase( Ease.Linear ) );
                 s.AppendCallback( () => CheckCell( cell ) );
             }
             s.onComplete += () => OnMoveEnd.Invoke( this );
@@ -81,18 +87,22 @@
                 if ( c == egg.cell )
                     egg.Die();
             }
+
+            OnMoveStart.Invoke();
         }
 
         public void Rotate () {
             switch ( GetRotationAction() ) {
                 case RotateActionEnum.TurnLeft:
-                transform.DOLocalRotate( transform.localEulerAngles + Vector3.up * -90f, 30 ).SetSpeedBased().onComplete += () => OnRotateEnd.Invoke( this );
+                OnRotateLeft.Invoke();
+                transform.DOLocalRotate( transform.localEulerAngles + Vector3.up * -90f, 1.333f ).SetEase(Ease.Linear).onComplete += () => OnRotateEnd.Invoke( this );
                 break;
                 case RotateActionEnum.TurnRight:
-                transform.DOLocalRotate( transform.localEulerAngles + Vector3.up * 90f, 30 ).SetSpeedBased().onComplete += () => OnRotateEnd.Invoke( this );
+                OnRotateRight.Invoke();
+                transform.DOLocalRotate( transform.localEulerAngles + Vector3.up * 90f, 1.333f ).SetEase( Ease.Linear ).onComplete += () => OnRotateEnd.Invoke( this );
                 break;
                 case RotateActionEnum.Turn180:
-                transform.DOLocalRotate( transform.localEulerAngles + Vector3.up * 180f, 30 ).SetSpeedBased().onComplete += () => OnRotateEnd.Invoke( this );
+                transform.DOLocalRotate( transform.localEulerAngles + Vector3.up * 180f, 1.333f ).SetEase( Ease.Linear ).onComplete += () => OnRotateEnd.Invoke( this );
                 break;
                 case RotateActionEnum.none:
                 OnRotateEnd.Invoke( this );
@@ -103,12 +113,14 @@
         }
 
         public void RotateLeft () {
-            transform.DOLocalRotate( transform.localEulerAngles + Vector3.up * -90f, 30 ).SetSpeedBased().onComplete += () => OnPlayerRotationEnd.Invoke();
+            OnRotateLeft.Invoke();
+            transform.DOLocalRotate( transform.localEulerAngles + Vector3.up * -90f, 1.333f ).SetEase( Ease.Linear ).onComplete += () => OnPlayerRotationEnd.Invoke();
             enemyDirection = NewEntityDirection( RotateActionEnum.TurnLeft );
         }
 
         public void RotateRight () {
-            transform.DOLocalRotate( transform.localEulerAngles + Vector3.up * 90f, 30 ).SetSpeedBased().onComplete += () => OnPlayerRotationEnd.Invoke();
+            OnRotateRight.Invoke();
+            transform.DOLocalRotate( transform.localEulerAngles + Vector3.up * 90f, 1.333f ).SetEase( Ease.Linear ).onComplete += () => OnPlayerRotationEnd.Invoke();
             enemyDirection = NewEntityDirection( RotateActionEnum.TurnRight );
         }
         #endregion
