@@ -90,6 +90,9 @@
             tempCells = GetAttackTargets();
             attackCount = tempCells.Length;
 
+            if ( attackCount == 0 )
+                OnAttackEnd.Invoke( this );
+
             foreach ( var cell in tempCells ) {
                 tempInterpolator = Instantiate( fireBallPrefab, fireBallSpawnPoint.position, Quaternion.identity );
                 tempInterpolator.OnTargetReached.AddListener( () => FireBallReachedPositionHandler( cell ) );
