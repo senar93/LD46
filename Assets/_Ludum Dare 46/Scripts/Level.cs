@@ -19,9 +19,9 @@
         [Header("Events")]
         public UnityEvent OnSetupStart;
         public UnityEvent OnSetupEnd;
+        public UnityEvent OnActivationStart;
+        public UnityEvent OnActivationEnd;
 
-		[HideInInspector]
-        public System.Action OnActivationSequenceEnd;
         public bool EnemiesLeft => enemies.Count > 0;
 
         public void Setup () {
@@ -41,7 +41,7 @@
             OnSetupEnd.Invoke();
         }
 
-        public float Activate () {
+        public void Activate () {
             Sequence s = DOTween.Sequence();
 
             Cell c = gridData.cells[0,0];
@@ -58,8 +58,7 @@
                 }
             }
             s.onComplete += ActivationSequenceEndHandler;
-
-            return s.Duration();
+            OnActivationStart.Invoke();
         }
 
         public void EnemyDeathHandler ( EnemyEntity enemy ) {
@@ -67,7 +66,7 @@
         }
 
         private void ActivationSequenceEndHandler () {
-            OnActivationSequenceEnd?.Invoke();
+            OnActivationEnd.Invoke();
         }
 
 		/// <summary>

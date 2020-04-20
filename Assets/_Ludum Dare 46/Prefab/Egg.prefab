@@ -167,6 +167,12 @@ MonoBehaviour:
   loopType: 0
   OnPlay:
     m_PersistentCalls:
+      m_Calls: []
+  OnRewind:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPlayEnd:
+    m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 7305557578082357019}
         m_MethodName: Play
@@ -190,12 +196,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  OnRewind:
-    m_PersistentCalls:
-      m_Calls: []
-  OnPlayEnd:
-    m_PersistentCalls:
-      m_Calls: []
   OnRewindEnd:
     m_PersistentCalls:
       m_Calls: []

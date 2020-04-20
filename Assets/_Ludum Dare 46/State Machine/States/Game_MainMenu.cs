@@ -28,28 +28,32 @@
 
             context.mainMenu.SetActive( false );
 
-            ParticleSequence( level.Activate() );
+            level.Activate();
+            ParticleSequence( true );
             OnLevelActivationStart.Invoke();
 
-            level.OnActivationSequenceEnd += LevelActivationHandler;
+            level.OnActivationEnd.AddListener( LevelActivationHandler );
         }
 
         private void LevelActivationHandler () {
+            ParticleSequence( false );
             OnLevelActivationEnd.Invoke();
             context.GoNext();
         }
 
-        private void ParticleSequence ( float duration ) {
-            context.ambientParticle.Play();
-            Sequence s = DOTween.Sequence();
-            s.Append( DOTween.To( GetSimSpeed, SetSimSpeed, 80, duration * .2f ) );
-            s.AppendInterval( duration * .4f );
-            s.Append( DOTween.To( GetSimSpeed, SetSimSpeed, 1, duration * .4f ).SetEase( Ease.OutQuint ) );
+        private void ParticleSequence ( bool value ) {
+            if ( value ) {
+                context.ambientParticle.Play();
+                DOTween.To( GetSimSpeed, SetSimSpeed, 80, .4f );
+            }
+            else {
+                DOTween.To( GetSimSpeed, SetSimSpeed, 1, .4f ).SetEase( Ease.OutQuint );
+            }
         }
 
         public override void Exit () {
             OnLevelButtonClick.InvokeAction -= LevelButtonClickHandler;
-            context.currentLevel.OnActivationSequenceEnd -= LevelActivationHandler;
+            context.currentLevel.OnActivationEnd.RemoveListener( LevelActivationHandler );
         }
     }
 }
