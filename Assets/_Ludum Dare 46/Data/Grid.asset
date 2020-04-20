@@ -15,32 +15,7 @@ MonoBehaviour:
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
+    ReferencedUnityObjects: []
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -56,80 +31,80 @@ MonoBehaviour:
       Entry: 1
       Data: 5|5
     - Name: 
-      Entry: 10
-      Data: 0
+      Entry: 6
+      Data: 
     - Name: 
-      Entry: 10
-      Data: 1
+      Entry: 6
+      Data: 
     - Name: 
-      Entry: 10
-      Data: 2
+      Entry: 6
+      Data: 
     - Name: 
-      Entry: 10
-      Data: 3
+      Entry: 6
+      Data: 
     - Name: 
-      Entry: 10
-      Data: 4
+      Entry: 6
+      Data: 
     - Name: 
-      Entry: 10
-      Data: 5
+      Entry: 6
+      Data: 
     - Name: 
-      Entry: 10
-      Data: 6
+      Entry: 6
+      Data: 
     - Name: 
-      Entry: 10
-      Data: 7
+      Entry: 6
+      Data: 
     - Name: 
-      Entry: 10
-      Data: 8
+      Entry: 6
+      Data: 
     - Name: 
-      Entry: 10
-      Data: 9
+      Entry: 6
+      Data: 
     - Name: 
-      Entry: 10
-      Data: 10
+      Entry: 6
+      Data: 
     - Name: 
-      Entry: 10
-      Data: 11
+      Entry: 6
+      Data: 
     - Name: 
-      Entry: 10
-      Data: 12
+      Entry: 6
+      Data: 
     - Name: 
-      Entry: 10
-      Data: 13
+      Entry: 6
+      Data: 
     - Name: 
-      Entry: 10
-      Data: 14
+      Entry: 6
+      Data: 
     - Name: 
-      Entry: 10
-      Data: 15
+      Entry: 6
+      Data: 
     - Name: 
-      Entry: 10
-      Data: 16
+      Entry: 6
+      Data: 
     - Name: 
-      Entry: 10
-      Data: 17
+      Entry: 6
+      Data: 
     - Name: 
-      Entry: 10
-      Data: 18
+      Entry: 6
+      Data: 
     - Name: 
-      Entry: 10
-      Data: 19
+      Entry: 6
+      Data: 
     - Name: 
-      Entry: 10
-      Data: 20
+      Entry: 6
+      Data: 
     - Name: 
-      Entry: 10
-      Data: 21
+      Entry: 6
+      Data: 
     - Name: 
-      Entry: 10
-      Data: 22
+      Entry: 6
+      Data: 
     - Name: 
-      Entry: 10
-      Data: 23
+      Entry: 6
+      Data: 
     - Name: 
-      Entry: 10
-      Data: 24
+      Entry: 6
+      Data: 
     - Name: 
       Entry: 13
       Data: 

@@ -25,6 +25,7 @@
             gridData.cells = cells;
         }
 
+#if UNITY_EDITOR
         [Button( "Generate" )]
         public void Generate () {
             int count = container.childCount;
@@ -43,9 +44,9 @@
             for ( int x = 0; x < size.x; x++ ) {
                 for ( int y = 0; y < size.y; y++ ) {
                     Vector3 specificOffset = new Vector3( x * cellDistance + cellDistance * .5f, 0, y * cellDistance + cellDistance * .5f );
-                    Cell c = Instantiate( cellPrefab,
-                        container.transform.position + startingOffset + specificOffset,
-                        Quaternion.identity, container );
+                    GameObject go = PrefabUtility.InstantiatePrefab( cellPrefab.gameObject, container ) as GameObject;
+                    Cell c = go.GetComponent<Cell>();
+                    c.transform.SetPositionAndRotation( container.transform.position + startingOffset + specificOffset, Quaternion.identity );
                     c.gameObject.name = x.ToString() + "," + y.ToString();
                     c.x = x;
                     c.y = y;
@@ -53,11 +54,10 @@
                 }
             }
 
-#if UNITY_EDITOR
             EditorUtility.SetDirty( gridData );
             AssetDatabase.SaveAssets();
-#endif
         }
+#endif
 
 #if UNITY_EDITOR
         private void OnDrawGizmos () {
