@@ -23,6 +23,7 @@
         }
 
         private void EggDeathHandler () {
+            Unsubscribe();
             context.GoLoss();
         }
 
@@ -32,22 +33,28 @@
                 tempEnemies.Remove( enemy );
 
             //if all enemies finished movement
-            if ( tempEnemies.Count == 0 )
+            if ( tempEnemies.Count == 0 ) {
+                Unsubscribe();
                 context.GoNext();
+            }
         }
 
         private void EnemyDeathHandler ( EnemyEntity enemy ) {
-            if ( context.currentLevel.EnemiesLeft == false )
+            if ( context.currentLevel.EnemiesLeft == false ) {
+                Unsubscribe();
                 context.GoWin();
+            }
+        }
+
+        private void Unsubscribe () {
+            OnEnemyDeath.InvokeAction -= EnemyDeathHandler;
+            OnEggDeath.InvokeAction -= EggDeathHandler;
         }
 
         public override void Exit () {
             base.Exit();
 
             tempEnemies.Clear();
-
-            OnEnemyDeath.InvokeAction -= EnemyDeathHandler;
-            OnEggDeath.InvokeAction -= EggDeathHandler;
         }
     }
 }

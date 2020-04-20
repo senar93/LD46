@@ -79,7 +79,6 @@
         #region API Gameplay
         public void Die () {
             OnDeath.Invoke( this );
-            Destroy( gameObject );
         }
 
         public void Attack () {
@@ -89,7 +88,7 @@
             attackCount = tempCells.Length;
 
             foreach ( var cell in tempCells ) {
-                tempInterpolator = Instantiate(fireBallPrefab, fireBallSpawnPoint.position, Quaternion.identity);
+                tempInterpolator = Instantiate( fireBallPrefab, fireBallSpawnPoint.position, Quaternion.identity );
                 tempInterpolator.OnTargetReached.AddListener( () => FireBallReachedPositionHandler( cell ) );
                 tempInterpolator.SetTarget( cell.transform );
                 tempInterpolator.StartInterpolation();
@@ -112,6 +111,13 @@
                 cell = c;
                 if ( c == level.egg.cell )
                     level.egg.Die();
+                else
+                    foreach ( var enemy in level.enemies ) {
+                        if ( enemy != this && enemy.cell == c ) {
+                            enemy.Die();
+                            this.Die();
+                        }
+                    }
             }
 
             OnMoveStart.Invoke();
