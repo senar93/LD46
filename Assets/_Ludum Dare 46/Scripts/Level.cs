@@ -20,6 +20,7 @@
         public UnityEvent OnSetupStart;
         public UnityEvent OnSetupEnd;
 
+		[HideInInspector]
         public System.Action OnActivationSequenceEnd;
         public bool EnemiesLeft => enemies.Count > 0;
 
@@ -70,22 +71,29 @@
         }
 
 		#region EDITOR
-		[Button("Fill Enemies", ButtonSizes.Gigantic), GUIColor(0.5f, 1f, 0.5f, 1f)]
-		public  void FillEnemies()
+		//[Button("Fill Enemies & Egg", ButtonSizes.Gigantic), GUIColor(0.5f, 1f, 0.5f, 1f)]
+		private void FillEnemiesAndEgg()
 		{
 			enemies.Clear();
 			enemies = GetComponentsInChildren<EnemyEntity>().ToList();
+			egg = GetComponentInChildren<Egg>();
 		}
 
-
-		[Button("Add to Game State Machine", ButtonSizes.Gigantic), GUIColor(0.5f, 1f, 0.5f, 1f)]
-		public void AddToGameStateMachine()
+		//[Button("Add to Game State Machine", ButtonSizes.Gigantic), GUIColor(0.5f, 1f, 0.5f, 1f)]
+		private void AddToGameStateMachine()
 		{
 			Game_SM tmp = FindObjectOfType<Game_SM>();
 			if(!tmp.context.levels.Contains(this))
 			{
 				tmp.context.levels.Add(this);
 			}
+		}
+
+		[Button("SETUP LEVEL", ButtonSizes.Gigantic), GUIColor(0.5f, 1f, 0.5f, 1f)]
+		private void SetupLevelRef_EditorOnly()
+		{
+			FillEnemiesAndEgg();
+			AddToGameStateMachine();
 		}
 		#endregion
 
