@@ -36,6 +36,7 @@
         public override void Exit () {
             base.Exit();
 
+            OnPlayerActionBegin.InvokeAction -= PlayerActionBeginHandler;
             OnPlayerActionEnd.InvokeAction -= PlayerActionEndHandler;
         }
     }
