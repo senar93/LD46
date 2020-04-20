@@ -67,15 +67,10 @@
 			List<Cell> hittedCell = new List<Cell>();
 			List<EnemyEntity> tmpEnemy = new List<EnemyEntity>(context.currentLevel.enemies);
 			
-			//check attacked cells
-			foreach(EnemyEntity enemy in tmpEnemy)
-			{
-				hittedCell.AddRange(enemy.GetAttackTargets());
-			}
-			hittedCell = hittedCell.Distinct().ToList();
-			
+			hittedCell = context.currentLevel.GetAllThreatenedCell();
+
 			//remove enemy "killed"
-			foreach(EnemyEntity enemy in context.currentLevel.enemies)
+			foreach (EnemyEntity enemy in context.currentLevel.enemies)
 			{
 				if(hittedCell.Contains(enemy.cell))
 				{

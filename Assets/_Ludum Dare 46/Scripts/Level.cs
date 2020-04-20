@@ -70,6 +70,42 @@
             OnActivationSequenceEnd?.Invoke();
         }
 
+		/// <summary>
+		/// restituisce tutte le celle univoche che verranno attaccate da qualcuno
+		/// </summary>
+		/// <returns></returns>
+		public List<Cell> GetAllThreatenedCell() {
+			List<Cell> hittedCell = new List<Cell>();
+
+			//check attacked cells
+			foreach (EnemyEntity enemy in enemies)
+			{
+				hittedCell.AddRange(enemy.GetAttackTargets());
+			}
+			hittedCell = hittedCell.Distinct().ToList();
+
+			return hittedCell;
+		}
+
+		/// <summary>
+		/// restituisce tutte le celle univioche che verranno calpestate da qualcuno
+		/// </summary>
+		/// <returns></returns>
+		public List<Cell> GetAllFutureMoveCell()
+		{
+			List<Cell> tmp = new List<Cell>();
+
+			//check attacked cells
+			foreach (EnemyEntity enemy in enemies)
+			{
+				tmp.AddRange(enemy.GetMovementCells());
+			}
+			tmp = tmp.Distinct().ToList();
+
+			return tmp;
+		}
+
+
 		#region EDITOR
 		//[Button("Fill Enemies & Egg", ButtonSizes.Gigantic), GUIColor(0.5f, 1f, 0.5f, 1f)]
 		private void FillEnemiesAndEgg()
