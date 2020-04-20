@@ -25,6 +25,13 @@
         [Range(0, 255)]
         public int rotationActionIndex = 0;
 
+		[HideInInspector]
+		public Cell cell;
+		[HideInInspector]
+        public DirectionEnum enemyDirection = DirectionEnum.Down;
+		[HideInInspector] public GridData currentGrid;
+        [HideInInspector] public Egg egg;
+
 		[ShowInInspector]
 		private Cell InspectorCell {
 			get => cell;
@@ -59,14 +66,7 @@
 		}
 
 
-		[HideInInspector]
-		public Cell cell;
-		[HideInInspector]
-        public DirectionEnum enemyDirection = DirectionEnum.Down;
-		[HideInInspector] public GridData currentGrid;
-        [HideInInspector] public Egg egg;
-
-        protected override void CustomSetup () {
+		protected override void CustomSetup () {
             transform.position = cell.originalPos + Vector3.up * .5f;
         }
 

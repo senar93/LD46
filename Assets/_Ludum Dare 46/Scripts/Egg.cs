@@ -4,14 +4,24 @@
 	using Sirenix.OdinInspector;
 
     public class Egg : MonoBehaviour {
-        [Header("Refs"), Required]
-        public Cell cell;
+        [Header("Refs"), Required, HideInInspector]
+		public Cell cell;
 
         [Header("Events")]
         public UnityEvent OnSpawn;
         public UnityEvent OnDeath;
 
-        public void Spawn () {
+		[ShowInInspector]
+		private Cell InspectorCell {
+			get => cell;
+			set {
+				cell = value;
+				this.transform.position = cell.transform.position + Vector3.up * -1;
+			}
+		}
+
+
+		public void Spawn () {
             transform.position = cell.transform.position - Vector3.up * 1;
             OnSpawn.Invoke();
         }
