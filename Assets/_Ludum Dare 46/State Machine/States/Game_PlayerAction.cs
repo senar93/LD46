@@ -32,7 +32,14 @@
 			else
 				context.currentLevel.egg.SetEggSafe();
 
-		}
+            foreach ( var cell in context.currentLevel.GetAllFutureMoveCell() ) {
+                cell.ShowMovement( true );
+            }
+
+            foreach ( var cell in context.currentLevel.GetAllThreatenedCell() ) {
+                cell.ShowAttack( true );
+            }
+        }
 
         private void ActionSkipButtonClickHandler () {
             Unsubscribe();
@@ -60,6 +67,14 @@
             base.Exit();
 
             context.skipActionButton.Active( false );
+
+            foreach ( var cell in context.currentLevel.GetAllFutureMoveCell() ) {
+                cell.ShowMovement( false );
+            }
+
+            foreach ( var cell in context.currentLevel.GetAllThreatenedCell() ) {
+                cell.ShowAttack( false );
+            }
         }
 
 		public bool CheckEggDanger() 

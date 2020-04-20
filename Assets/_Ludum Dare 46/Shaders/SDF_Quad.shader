@@ -10,7 +10,7 @@
     }
     SubShader
     {
-        Tags { "RenderType"="Transparent" }
+        Tags { "QUEUE" = "Transparent" "IGNOREPROJECTOR" = "true" "RenderType"="Transparent" }
         LOD 100
 
 		Blend One OneMinusSrcAlpha
@@ -65,6 +65,7 @@
 				float d = sdBox(i.uv, float2(_SizeX, _SizeY) );
 				float4 col = 1-smoothstep(_SmoothstepMin,_SmoothstepMax,d);
 				col.rgba *= _Color.rgba;
+                col.a = col.r;
 				//col.a = min(col.a,_Color.a);
                 // apply fog
                 UNITY_APPLY_FOG(i.fogCoord, col);
