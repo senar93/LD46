@@ -169,6 +169,16 @@
             transform.DOLocalRotate( transform.localEulerAngles + Vector3.up * 90f, 1.333f ).SetEase( Ease.Linear ).onComplete += () => OnPlayerRotationEnd.Invoke();
             enemyDirection = NewEntityDirection( RotateActionEnum.TurnRight );
         }
+
+        public void Select () {
+            foreach ( var cell in GetMovementCells() ) {
+                cell.Highlight();
+            }
+
+            foreach ( var cell in GetAttackTargets() ) {
+                cell.Highlight();
+            }
+        }
         #endregion
 
         #region API GET SOMETHING

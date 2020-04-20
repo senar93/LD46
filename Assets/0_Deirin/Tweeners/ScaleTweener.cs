@@ -20,7 +20,7 @@
         }
 
         public override void Rewind () {
-            target.DOScale( startScale, duration ).SetEase( ease ).SetLoops( loops ).onComplete += () => OnPlayEnd.Invoke();
+            target.DOScale( startScale, duration ).SetEase( ease ).SetLoops( loops, loopType ).onComplete += () => OnPlayEnd.Invoke();
         }
 
         public override void Play () {
@@ -28,7 +28,7 @@
             if ( resetOnPlay == false )
                 startScale = target.localScale;
             endScale = multiply ? startScale.Mul( targetScale ) : targetScale;
-            target.DOScale( addToOriginal ? startScale + endScale : endScale, duration ).SetEase( ease ).SetLoops( loops ).onComplete += () => OnPlayEnd.Invoke();
+            target.DOScale( addToOriginal ? startScale + endScale : endScale, duration ).SetEase( ease ).SetLoops( loops, loopType ).onComplete += () => OnPlayEnd.Invoke();
         }
 
         public override void Stop () {
