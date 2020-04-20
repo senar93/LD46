@@ -9,7 +9,7 @@
     public class Level : SerializedMonoBehaviour {
         [Title("Data")]
         [ReadOnly] public GridData gridData;
-        [Min(0)] public int turns;
+        [Min(1)] public int turns;
 
         [Title("References")]
         public List<EnemyEntity> enemies;
