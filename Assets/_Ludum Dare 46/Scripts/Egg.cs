@@ -6,6 +6,8 @@
     public class Egg : MonoBehaviour {
         [Header("Refs"), Required, HideInInspector]
 		public Cell cell;
+		[ReadOnly]
+		public bool isInDanger { get; private set; } = false;
 
         [Header("Events")]
         public UnityEvent OnSpawn;
@@ -21,6 +23,16 @@
 		}
 
 
+
+		public void SetEggDanger() {
+			isInDanger = true;
+		}
+
+		public void SetEggSafe()
+		{
+			isInDanger = false;
+		}
+
 		public void Spawn () {
             transform.position = cell.transform.position - Vector3.up * 1;
             OnSpawn.Invoke();
@@ -29,5 +41,7 @@
         public void Die () {
             OnDeath.Invoke();
         }
+
+
     } 
 }
