@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using UnityEngine;
+    using Deirin.CustomButton;
 
     public class Game_SM : StateMachineBase {
         public GameContext context;
@@ -36,7 +37,8 @@
         public Player player;
         public GameObject mainMenu;
         public GridData gridData;
-        public CounterUI turnCounter, movesCounter;
+        public CounterUI turnCounter;
+        public CustomButton_Canvas skipActionButton;
 
         [HideInInspector] public Level currentLevel;
         [HideInInspector] public int currentLevelTurnsLeft;

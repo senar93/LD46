@@ -34,7 +34,7 @@
             }
             foreach ( var enemy in enemies ) {
                 enemy.transform.position = hiddenPos.position;
-                enemy.egg = egg;
+                enemy.level = this;
                 enemy.currentGrid = gridData;
             }
             egg.transform.position = hiddenPos.position;

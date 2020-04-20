@@ -1,50 +1,60 @@
 ﻿namespace LD46 {
-    using System.Collections.Generic;
+    using Deirin.Utilities;
+    using UnityEngine;
 
     public class Game_AttackPhase : GameStateBase {
-        private List<EnemyEntity> tempEnemies = new List<EnemyEntity>();
+        [Header("Event Listeners")]
+        public GameEvent_Enemy OnEnemyDeath;
+        public GameEvent OnEggDeath;
+
+        private int enemiesFinishedAttacking;
 
         public override void Enter () {
             base.Enter();
 
+            enemiesFinishedAttacking = 0;
+
+            OnEggDeath.InvokeAction += EggDeathHandler;
+            OnEnemyDeath.InvokeAction += EnemyDeathHandler;
+
             //all enemies attack
-            foreach ( var attackingEnemy in context.currentLevel.enemies )
-                foreach ( var cell in attackingEnemy.GetAttackTargets() )
-                    //check hit
-                    foreach ( var possibleTargetedEnemy in context.currentLevel.enemies ) {
-
-                        //save hit enemies
-                        if ( cell == possibleTargetedEnemy.cell && tempEnemies.Contains( possibleTargetedEnemy ) == false )
-                            tempEnemies.Add( possibleTargetedEnemy );
-
-                        //check egg hit => if so LOSS
-                        if ( cell == context.currentLevel.egg.cell ) {
-                            context.currentLevel.egg.Die();
-                            context.GoLoss();
-                            return;
-                        }
-                    }
-
-            //kill all hit enemies
-            foreach ( var enemy in tempEnemies ) {
-                enemy.Die();
+            foreach ( var attackingEnemy in context.currentLevel.enemies ) {
+                attackingEnemy.OnAttackEnd.AddListener( EnemyAttackEndHandler );
+                attackingEnemy.Attack();
             }
-
-            tempEnemies.Clear();
-
-            //if no more enemies => go WIN
-            if ( context.currentLevel.EnemiesLeft == false ) {
-                context.GoWin();
-                return;
-            }
-
-            context.GoNext();
         }
 
-        public override void Exit () {
-            base.Exit();
+        //when an enemy finishes his attack
+        private void EnemyAttackEndHandler ( EnemyEntity enemy ) {
+            enemiesFinishedAttacking++;
+            //if all enemies finished attacking AND there are still enemies alive
+            if ( enemiesFinishedAttacking >= context.currentLevel.enemies.Count ) {
+                Unsubscribe();
+                context.GoNext();
+            }
+        }
 
-            tempEnemies.Clear();
+        //when an enemy dies
+        private void EnemyDeathHandler ( EnemyEntity enemy ) {
+            //if no more enemies => WIN
+            if ( context.currentLevel.EnemiesLeft == false ) {
+                Unsubscribe();
+                context.GoWin();
+            }
+        }
+
+        //quando l'uovo muore
+        private void EggDeathHandler () {
+            Unsubscribe();
+            context.GoLoss();
+        }
+
+        private void Unsubscribe () {
+            OnEggDeath.InvokeAction -= EggDeathHandler;
+            OnEnemyDeath.InvokeAction -= EnemyDeathHandler;
+            foreach ( var attackingEnemy in context.currentLevel.enemies ) {
+                attackingEnemy.OnAttackEnd.RemoveListener( EnemyAttackEndHandler );
+            }
         }
     }
 }

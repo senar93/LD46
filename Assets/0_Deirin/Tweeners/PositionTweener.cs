@@ -5,11 +5,14 @@
     public class PositionTweener : BaseTweener {
         [Header("Specific Params")]
         public Transform target;
+        public Transform targetTransformPosition;
+        public Transform startingTransfrormPosition;
         public Vector3 targetPosition;
         public bool addToOriginal;
         public bool resetOnPlay = true;
 
-        Vector3 startPos;
+        private Vector3 startPos;
+        private Vector3 endPos;
 
         private void Awake () {
             startPos = target.position;
@@ -17,7 +20,11 @@
 
         public override void Rewind () {
             target.DOKill();
-            target.DOMove( startPos, duration ).SetEase( ease ).SetLoops( loops, loopType ).onComplete += () => OnPlayEnd.Invoke();
+
+            if ( startingTransfrormPosition != null )
+                startPos = startingTransfrormPosition.position;
+
+            target.DOMove( startPos, duration ).SetEase( ease ). SetLoops( loops, loopType ).onComplete += () => OnRewindEnd.Invoke();
         }
 
         public override void Play () {
@@ -25,12 +32,24 @@
             OnPlay.Invoke();
             if ( resetOnPlay == false )
                 startPos = target.position;
-            target.DOMove( addToOriginal ? startPos + targetPosition : targetPosition, duration ).SetEase( ease ).SetLoops( loops, loopType ).onComplete += () => OnPlayEnd.Invoke();
+
+            if ( targetTransformPosition != null ) {
+                endPos = targetTransformPosition.position;
+            }
+            else {
+                endPos = addToOriginal ? startPos + targetPosition : targetPosition;
+            }
+
+            target.DOMove( endPos, duration ).SetEase( ease ).SetLoops( loops, loopType ).onComplete += () => OnPlayEnd.Invoke();
         }
 
         public override void Stop () {
             target.DOKill();
-            OnPlayEnd.Invoke();
+            OnStop.Invoke();
+        }
+
+        public void GoToEnd () {
+            target.DOGoto( duration );
         }
     }
 }
