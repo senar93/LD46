@@ -20,8 +20,35 @@
         public int rotationActionIndex = 0;
 
         public Cell cell;
+		[HideInInspector]
         public DirectionEnum enemyDirection = DirectionEnum.Down;
-        [HideInInspector] public GridData currentGrid;
+		[ShowInInspector]
+		private DirectionEnum InspectorEnemyDirection {
+			get 
+			{
+				return enemyDirection;
+			}
+			set {
+				enemyDirection = value;
+				switch (enemyDirection)
+				{
+					case DirectionEnum.Down:
+						transform.rotation = Quaternion.Euler(0, 225, 0);
+						break;
+					case DirectionEnum.Right:
+						transform.rotation = Quaternion.Euler(0, 135, 0);
+						break;
+					case DirectionEnum.Up:
+						transform.rotation = Quaternion.Euler(0, 405, 0);
+						break;
+					case DirectionEnum.Left:
+						transform.rotation = Quaternion.Euler(0, 315, 0);
+						break;
+				}
+			}
+		}
+
+		[HideInInspector] public GridData currentGrid;
         [HideInInspector] public Egg egg;
 
         protected override void CustomSetup () {
@@ -236,9 +263,9 @@
 
             return enemyDirection;
         }
-    }
+	}
 
-    public static class MonoBehaviourExtentions {
+	public static class MonoBehaviourExtentions {
         public static Vector3[] ToPositions ( this MonoBehaviour[] monos ) {
             Vector3[] ts = new Vector3[monos.Length];
             for ( int i = 0; i < monos.Length; i++ ) {
