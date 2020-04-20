@@ -299,7 +299,7 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   comparrisonType: 0
-  indexToCompare: 1
+  indexToCompare: 255
 --- !u!1 &2235377992951573034
 GameObject:
   m_ObjectHideFlags: 0
@@ -1065,8 +1065,8 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   conditions: []
-  rotation: 2
-  nextRotationIndexValue: 1
+  rotation: 0
+  nextRotationIndexValue: 255
 --- !u!114 &7734746916250940926
 MonoBehaviour:
   m_ObjectHideFlags: 0
