@@ -154,12 +154,12 @@ MonoBehaviour:
   OnMovementHighlight:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: 
+      - m_Target: {fileID: 2818495536357657220}
+        m_MethodName: Play
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -437,6 +437,18 @@ Transform:
 --- !u!114 &8020329273196691770 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1685295112120532689, guid: 060ea8a5264daf34d98b6502d467bb63,
+    type: 3}
+  m_PrefabInstance: {fileID: 8660052661706113003}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5427ca73ea3416d4d96a34acba3fa422, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2818495536357657220 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6860106769020253551, guid: 060ea8a5264daf34d98b6502d467bb63,
     type: 3}
   m_PrefabInstance: {fileID: 8660052661706113003}
   m_PrefabAsset: {fileID: 0}
