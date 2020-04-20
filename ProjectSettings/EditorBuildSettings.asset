@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/_Ludum Dare 46/Scenes/Main.unity
+    guid: 6cbb26c2e572eac49a52481cc4f3da76
   m_configObjects: {}
