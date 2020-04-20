@@ -6,17 +6,17 @@
 #endif
 
     public class GridGenerator : SerializedMonoBehaviour {
-        [Title("Data")]
+        [Title("Data"), Required]
         public GridData gridData;
 
-        [Title("Prefabs")]
+        [Title("Prefabs"), Required]
         public Cell cellPrefab;
 
         [Title("Parameters")]
         [MinValue(0)] public Vector2Int size;
         [MinValue(0)] public float cellDistance;
 
-        [Title("References")]
+        [Title("References"), Required]
         public Transform container;
 
         [SerializeField] private Cell[,] cells;
