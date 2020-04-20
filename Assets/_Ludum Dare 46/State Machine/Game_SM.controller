@@ -146,6 +146,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   OnEnemyDeath: {fileID: 11400000, guid: c2920597b31c045448670913f0fadd44, type: 2}
+  OnEggDeath: {fileID: 11400000, guid: dfe9be6b75f950c49b192c425556e1a1, type: 2}
 --- !u!1101 &-6367855719748508405
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
