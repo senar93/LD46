@@ -11,7 +11,7 @@
         [ReadOnly] public GridData gridData;
         [Min(1)] public int turns;
 
-        [Title("References")]
+        [Title("References"), Required]
         public List<EnemyEntity> enemies;
         public Egg egg;
         public Transform hiddenPos;

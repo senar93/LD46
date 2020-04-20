@@ -11,7 +11,7 @@
         public UnityEvent OnSpawn;
         public UnityEvent OnDeath;
 
-		[ShowInInspector]
+		[ShowInInspector, Required]
 		private Cell InspectorCell {
 			get => cell;
 			set {
