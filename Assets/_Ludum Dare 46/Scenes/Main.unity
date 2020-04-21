@@ -3451,7 +3451,7 @@ GameObject:
   - component: {fileID: 560603367}
   - component: {fileID: 560603369}
   m_Layer: 0
-  m_Name: Enemy Rotation Click
+  m_Name: Enemy Rotation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
