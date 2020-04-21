@@ -18,6 +18,7 @@
         }
 
         private void FadeOutHandler () {
+            OnLevelEndButtonClick.InvokeAction -= LevelEndButtonClickHandler;
             SceneManager.LoadScene( SceneManager.GetActiveScene().buildIndex );
         }
 
