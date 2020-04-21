@@ -105,6 +105,7 @@ GameObject:
   - component: {fileID: 4578994882134809637}
   - component: {fileID: 4578994882134809634}
   - component: {fileID: 2937622531720412375}
+  - component: {fileID: 6307046064116513817}
   m_Layer: 0
   m_Name: Fire Ball
   m_TagString: Untagged
@@ -203,8 +204,8 @@ MonoBehaviour:
   OnTargetReached:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2937622531720412375}
-        m_MethodName: Destroy
+      - m_Target: {fileID: 6307046064116513817}
+        m_MethodName: InstantiateObject
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -240,6 +241,49 @@ MonoBehaviour:
   OnDestruction:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &6307046064116513817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4578994882134809632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 171c5e8a17a48d646abdde5064e22ea9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  objPrefab: {fileID: 8916254977750924823, guid: d1ec3692f4d4bc3448f60823edcb52bc,
+    type: 3}
+  referenceTransform: {fileID: 4578994882134809635}
+  setAsParent: 0
+  usePosition: 1
+  position: {x: 0, y: 0, z: 0}
+  useRotation: 0
+  rotationEulers: {x: 0, y: 0, z: 0}
+  OnInstantiate:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2937622531720412375}
+        m_MethodName: Destroy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4578994882332684616
 GameObject:
   m_ObjectHideFlags: 0
