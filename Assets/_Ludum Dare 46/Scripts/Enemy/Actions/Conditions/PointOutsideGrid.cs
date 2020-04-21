@@ -24,13 +24,13 @@
 					}
 					break;
 				case DirectionEnum.Right:
-					if(enemyEntity.cell.y == enemyEntity.currentGrid.cells.GetLength(0))
+					if(enemyEntity.cell.y == enemyEntity.currentGrid.cells.GetLength(0) -1) 
 					{
 						return true;
 					}
 					break;
 				case DirectionEnum.Up:
-					if( enemyEntity.cell.y == enemyEntity.currentGrid.cells.GetLength(1))
+					if( enemyEntity.cell.y == enemyEntity.currentGrid.cells.GetLength(1) -1)
 					{
 						return true;
 					}
