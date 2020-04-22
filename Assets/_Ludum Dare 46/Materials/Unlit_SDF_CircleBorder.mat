@@ -21,8 +21,8 @@ Material:
     m_TexEnvs: []
     m_Floats:
     - _Radius: 0.45
-    - _SmoothstepMax: 0.01
+    - _SmoothstepMax: 0.2
     - _SmoothstepMin: 0
     - _Thickness: 0.3
     m_Colors:
-    - _Color: {r: 1, g: 0.5235849, b: 0.5235849, a: 1}
+    - _Color: {r: 1, g: 0.5235849, b: 0.5235849, a: 0.3137255}

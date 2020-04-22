@@ -3,7 +3,7 @@
     Properties
     {
 		_Color ( "Tint", Color ) = (1,1,1,1)
-		_Radius ("x", Range(0,1)) = .4
+		_Radius ("Radius", Range(0,1)) = .4
 		_Thickness("Thickness", Range(0,1)) = .5
 		_SmoothstepMin("Smoothstep Min", Range(-1,1) )= -1
 		_SmoothstepMax("Smoothstep Max", Range(-1,1) )= 1
@@ -13,7 +13,7 @@
         Tags { "QUEUE" = "Transparent" "IGNOREPROJECTOR" = "true" "RenderType"="Transparent" }
         LOD 100
 
-		Blend One OneMinusSrcAlpha
+        Blend SrcAlpha OneMinusSrcAlpha
 
         Pass
         {
@@ -62,14 +62,19 @@
             fixed4 frag (v2f i) : SV_Target
             {
 				i.uv -= .25;
+
 				float d = length(i.uv);
                 d = sin(d * 30 - _Time.y * 2);
 				d = abs(d) - _Thickness;
-				float4 col = 1-smoothstep(_SmoothstepMin,_SmoothstepMax,d);
-				col *= _Color;
+
+                d = 1 - smoothstep(_SmoothstepMin, _SmoothstepMax, d);
+
+                float4 color = float4(_Color.rgb, d * _Color.a);
+
                 // apply fog
-                UNITY_APPLY_FOG(i.fogCoord, col);
-                return col;
+                UNITY_APPLY_FOG(i.fogCoord, color);
+
+                return color;
             }
             ENDCG
         }

@@ -68,14 +68,6 @@
 
             context.skipActionButton.Active( false );
 
-            /*foreach ( var cell in context.currentLevel.GetAllFutureMoveCell() ) {
-                cell.ShowMovement( false );
-            }
-
-            foreach ( var cell in context.currentLevel.GetAllThreatenedCell() ) {
-                cell.ShowAttack( false );
-            }*/
-
 			foreach(var cell in context.currentLevel.gridData.cells)
 			{
 				cell.ShowAttack(false);
