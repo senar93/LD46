@@ -4964,7 +4964,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   speed: 1
   curveValueMultiplier: 1.2
-  offset: {x: 0, y: 0, z: 0}
+  offset: {x: 0, y: 0.5, z: 0}
   setStartPosOnSetup: 1
   OnTargetReached:
     m_PersistentCalls:
