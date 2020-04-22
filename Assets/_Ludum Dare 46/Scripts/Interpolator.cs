@@ -8,6 +8,7 @@
         public AnimationCurve curve;
         public float speed;
         public float curveValueMultiplier = 1;
+        public Vector3 offset;
         public bool setStartPosOnSetup = true;
 
         [Header("Events")]
@@ -18,11 +19,11 @@
 
         protected override void CustomSetup () {
             if ( setStartPosOnSetup )
-                startPosition = transform.position;
+                startPosition = transform.position + offset;
         }
 
         public void SetTarget ( Transform target ) {
-            targetPosition = target.position;
+            targetPosition = target.position + offset;
         }
 
         public void StartInterpolation () {
