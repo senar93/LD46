@@ -356,7 +356,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ignoresContainer: 0
-  duration: 0.5
+  duration: 0.2
   ease: 6
   loops: 0
   loopType: 0

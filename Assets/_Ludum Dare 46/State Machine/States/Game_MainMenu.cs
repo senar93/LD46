@@ -26,7 +26,10 @@
             context.currentLevel?.gameObject.SetActive( false );
 
             context.screenFader.blocksRaycasts = true;
-            context.screenFader.DOFade( 0, 1 ).onComplete += ScreenFadeInHandler;
+            context.screenFader.blocksRaycasts = false;
+            context.screenFader.DOFade( 0, 1 );
+
+            OnLevelButtonClick.InvokeAction += LevelButtonClickHandler;
         }
 
         private void LevelButtonClickHandler ( Level level ) {
@@ -57,11 +60,6 @@
             else {
                 DOTween.To( GetSimSpeed, SetSimSpeed, 1, .4f ).SetEase( Ease.OutQuint );
             }
-        }
-
-        private void ScreenFadeInHandler () {
-            context.screenFader.blocksRaycasts = false;
-            OnLevelButtonClick.InvokeAction += LevelButtonClickHandler;
         }
 
         public override void Exit () {
