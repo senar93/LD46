@@ -20,8 +20,8 @@ Material:
     serializedVersion: 3
     m_TexEnvs: []
     m_Floats:
-    - _SizeX: 0.45
-    - _SizeY: 0.45
+    - _SizeX: 0.4
+    - _SizeY: 0.4
     - _SmoothstepMax: 0.01
     - _SmoothstepMin: 0
     - _Thickness: 0.016

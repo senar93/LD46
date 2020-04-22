@@ -172,11 +172,11 @@
 
         public void Select () {
             foreach ( var cell in GetMovementCells() ) {
-                cell.Highlight();
+                cell.HighlightMovement();
             }
 
             foreach ( var cell in GetAttackTargets() ) {
-                cell.Highlight();
+                cell.HighlightAttack();
             }
         }
 
